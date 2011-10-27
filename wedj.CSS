@@ -1,0 +1,83 @@
+﻿body{
+	width: 640px;
+	font-size: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin: 0;
+	background-image: url('background.jpg');
+	background-repeat: no-repeat;
+	font-family: helvetica;
+}
+.genre{
+	width: 570px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	font-size: 40px;
+	height: 66px;
+	background-color: gray;
+	border-radius: 5px;
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+}
+.genre-text{
+	margin-top: 10px;
+	margin-left: 50px;
+}
+.inline{
+	display: inline-block;
+	vertical-align: top;
+}
+.plus-button{
+	
+}
+#back-arrow{
+	width: 200px;
+	height: inherit;
+	background-color: black;
+}
+#back-arrow img{
+	margin-top: 33px;
+	margin-left: 15px;
+}
+#header{
+	height: 120px;
+	background-color: white;
+}
+#logo{
+	width: 440px;
+	height: inherit;
+	background-color: black;
+	font-size: 36px;
+	text-align: center;
+	color: white;
+}
+#mag-glass{
+	width: 70px;
+	height: 70px;
+	background-image: url('mag-glass.png');
+	border-width: 0;
+	border-radius: 0px 5px 5px 0px;
+}
+#main{
+	font-size: 48px;
+	text-align: center;
+}
+#main p{
+	line-height: 30px;
+}
+#search-bar{
+	font-size: 0;
+}
+#search-field{
+	width: 500px;
+	height: 67px;
+	font-size: 40px;
+	border-radius: 5px 0px 0px 5px;
+	padding-left: 5px;
+	padding-right: 0;
+	padding-top: 0;
+	padding-bottom:0;
+	
+}

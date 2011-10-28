@@ -12,7 +12,7 @@
 
 <div id="header">
 	<div id="back-arrow" class="inline">
-		<a href="playlist.php"><img src="back.png"/></a>
+		<a href="partypage.php"><img src="back.png"/></a>
 	</div>
 	<div id="logo" class="inline">
 		<br />

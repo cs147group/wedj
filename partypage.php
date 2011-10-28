@@ -5,24 +5,50 @@
 <meta name="viewport" content="user-scalable=no,width=640px"/>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type"  />
 <link href="wedj.CSS" rel="stylesheet" type="text/css" />
-<title>We DJ!</title>
+<title>We DJ! - Party Page</title>
 </head>
 
 <body>
 
 <div id="header">
      <div id="back-arrow" class="inline">
-     	  <a href="playlist.php"><img src="back.png"/></a>
-	  </div>
-	  <div id="logo" class="inline">
-	       <br />
-	       	   WE DJ</div>
+     	    <a href="index.php"><img src="back.png"/></a>
+	      </div>
+	        <div id="logo" class="inline">
+		       <br />
+				   WE DJ</div>
 </div>
 <div id="main">
      <p>
-	PARTYTIME
-	</p>
-	</div>
+     WeDJ's hangout
+     </p>
+</div>
+
+<div class='add-songs'><div class = 'add-songs-text inline'>
+  <a href="search.php">add songs</a>
+</div>
+</div>
+<div class='playlist-title'>
+  <br>
+  NOW PLAYING:
+</div>
+<div class='playlist-title'>
+Champion
+</div>
+Flipsyde
+<div class='playlist-title'>
+  <br>
+  PLAYLIST
+</div>
+<div class='playlist-content'>
+Vamos a la Playa <div class='add-remove-button inline'>ADD</div>
+<br>
+Miranda
+<br>
+Stronger
+<br>
+Britney Spears
+</div>
 </body>
 
 </html>

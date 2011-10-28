@@ -13,8 +13,8 @@
 	margin-left: auto;
 	margin-right: auto;
 	text-align: left;
-	font-size: 40px;
 	height: 66px;
+	font-size: 0;
 	background-color: gray;
 	border-radius: 5px;
 	border-width: 1px;
@@ -24,13 +24,17 @@
 .genre-text{
 	margin-top: 10px;
 	margin-left: 50px;
+	width: 452px;
+	font-size: 40px;
 }
 .inline{
 	display: inline-block;
 	vertical-align: top;
 }
 .plus-button{
-	
+	height: 66px;
+	width: 66px;
+	background-image: url('green-button.png');
 }
 #back-arrow{
 	width: 200px;

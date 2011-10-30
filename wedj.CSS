@@ -9,6 +9,11 @@
 	background-repeat: no-repeat;
 	font-family: helvetica;
 }
+hr{
+	border:80%;
+	margin-left:50px;
+	margin-right:50px;
+}
 .genre{
 	width: 570px;
 	margin-left: auto;
@@ -84,5 +89,41 @@
 	padding-right: 0;
 	padding-top: 0;
 	padding-bottom:0;
+	
+}
+.add-songs{
+	width: 570px;
+	height: 66px;
+	background-color:gray;
+	border-radius:5px;
+	border-width:1px;
+	border-color:black;
+	border-style:solid;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+.add-songs-text{
+	margin-top:10px;
+	margin-left:50px;
+	width:452px;
+	font-size:40px;
+	text-align:center;
+}
+.playlist-title{
+	font-size:30px;
+	text-align:center;
+}
+.playlist-content{
+	font-size:26px;
+	text-align:center;
+}
+.add-remove-button{
+	height:30px;
+	width:66px;
+	background-color:yellow;
+	border-width:2px;
+	border-color:black;
+	border-radius:10px;
 	
 }

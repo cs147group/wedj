@@ -25,30 +25,32 @@
 </div>
 
 <div class='add-songs'><div class = 'add-songs-text inline'>
-  <a href="search.php">add songs</a>
+  <a href="search.php" data-role="button">add songs</a>
 </div>
 </div>
 <div class='playlist-title'>
   <br>
   NOW PLAYING:
-</div>
-<div class='playlist-title'>
-Champion
-</div>
-Flipsyde
-<div class='playlist-title'>
-  <br>
-  PLAYLIST
+<hr>
 </div>
 <div class='playlist-content'>
-Vamos a la Playa <div class='add-remove-button inline'>ADD</div>
+Champion<br>
+Flipsyde
+<hr>
+</div>
+<div class='playlist-title'>
+  <br>
+    PLAYLIST
+<hr>
+</div>
+<div class='playlist-content'>
+Vamos a la Playa <div class='add-remove-button inline'><a href="partypage.php">LIKE</a></div>
 <br>
 Miranda
-<br>
-Stronger
+<hr>
+Stronger<div class='add-remove-button inline'><a href="partypage.php">LIKE</a></div>
 <br>
 Britney Spears
-</div>
+<hr></div>
 </body>
-
 </html>

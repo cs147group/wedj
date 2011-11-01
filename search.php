@@ -1,43 +1,119 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<meta name="viewport" content="user-scalable=no,width=640px"/>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type"  />
-<link href="wedj.CSS" rel="stylesheet" type="text/css" />
-<title>We DJ!</title>
-</head>
-
-<body>
-
-<div id="header">
-	<div id="back-arrow" class="inline">
-		<a href="partypage.php"><img src="back.png"/></a>
-	</div>
-	<div id="logo" class="inline">
-		<br />
-		WE DJ</div>
-</div>
-<div id="main">
-	<p>
-		SEARCH
-	</p>
-	<form>
-	<div id="search-bar">
-		<input type="text" id="search-field" class="inline" name="q"/>
-		<input type="submit" class="inline" id="mag-glass" value=""/></div>
-	</form>
-	<p>
-	BROWSE BY GENRE
-	</p>
-	<?php
-		$arr = array( 1 => "Top 40", 2 => "Trance", 3 => "Rock", 4 => "Rap");
-		for($i = 1; $i < 5; $i++){
-			print "<div class='genre'><div class='genre-text inline'>" . $arr[$i] . "</div><div class='plus-button inline'></div></div>";
-		}
-	?>
-</div>
-
-</body>
-
-</html>
+<!DOCTYPE html>
+<?php include "header.php"; ?>
+			<div data-role="content">
+				<h3>Search for songs</h3>
+				<form action="#" method="get">
+					<label for="name">Enter a song title:</label>
+					<input type="search" name="songtitle" id="search" value=""  />
+					<button data-icon="search" type="submit" name="search" value="search-value">Search</button>
+				</form>
+				<h3>Browse songs by genre</h3>
+				<div data-role="collapsible-set">
+					<div data-role="collapsible">
+						<h3>Top 40</h3>
+						<ul data-role="listview" data-split-icon="plus" data-inset="true">
+							<li>
+								<a href="#">
+									<h3>Song Title 1</h3>
+									<p>Song Artist 1</p>
+								</a>
+								<a href="#"></a>
+							</li>
+							<li>
+								<a href="#">
+									<h3>Song Title 2</h3>
+									<p>Song Artist 2</p>
+								</a>
+								<a href="#"></a>
+							</li>
+							<li>
+								<a href="#">
+									<h3>Song Title 3</h3>
+									<p>Song Artist 3</p>
+								</a>
+								<a href="#"></a>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>Trance</h3>
+						<ul data-role="listview" data-split-icon="plus" data-inset="true">
+							<li>
+								<a href="#">
+									<h3>Song Title 1</h3>
+									<p>Song Artist 1</p>
+								</a>
+								<a href="#"></a>
+							</li>
+							<li>
+								<a href="#">
+									<h3>Song Title 2</h3>
+									<p>Song Artist 2</p>
+								</a>
+								<a href="#"></a>
+							</li>
+							<li>
+								<a href="#">
+									<h3>Song Title 3</h3>
+									<p>Song Artist 3</p>
+								</a>
+								<a href="#"></a>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>Rock</h3>
+						<ul data-role="listview" data-split-icon="plus" data-inset="true">
+							<li>
+								<a href="#">
+									<h3>Song Title 1</h3>
+									<p>Song Artist 1</p>
+								</a>
+								<a href="#"></a>
+							</li>
+							<li>
+								<a href="#">
+									<h3>Song Title 2</h3>
+									<p>Song Artist 2</p>
+								</a>
+								<a href="#"></a>
+							</li>
+							<li>
+								<a href="#">
+									<h3>Song Title 3</h3>
+									<p>Song Artist 3</p>
+								</a>
+								<a href="#"></a>
+							</li>
+						</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>Rap</h3>
+						<ul data-role="listview" data-split-icon="plus" data-inset="true">
+							<li>
+								<a href="#">
+									<h3>Song Title 1</h3>
+									<p>Song Artist 1</p>
+								</a>
+								<a href="#"></a>
+							</li>
+							<li>
+								<a href="#">
+									<h3>Song Title 2</h3>
+									<p>Song Artist 2</p>
+								</a>
+								<a href="#"></a>
+							</li>
+							<li>
+								<a href="#">
+									<h3>Song Title 3</h3>
+									<p>Song Artist 3</p>
+								</a>
+								<a href="#"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- FOOTER -->
+			<?php include "footer.php"; ?>

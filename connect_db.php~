@@ -1,0 +1,3 @@
+<?php
+	$conn = mysql_connect('mysql.cs147.org', 'jpulvera', eymQq6V);
+?>

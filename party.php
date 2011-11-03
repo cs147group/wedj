@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php include "links.php"; ?>
+<?php
+	include("ip-identifier.php");
+?>
 			<div data-role="header">
 				<a href="confirm-leave.php" data-icon="back" data-rel="dialog">Leave Party</a>
 				<h1>WeDJ</h1>

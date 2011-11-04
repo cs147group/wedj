@@ -1,7 +1,10 @@
 function browse_geolocate() {
 	$("#browseNearby").html("Loading nearby parties...");
 	$("#browseNearby").buttonMarkup({ icon: "gear" });
-	navigator.geolocation.getCurrentPosition(browse_lookup);
+	navigator.geolocation.getCurrentPosition(browse_lookup, function(){
+		$("#browseNearby").html("Browse nearby parties");
+		$("#browseNearby").buttonMarkup({ icon: "grid" });
+	});
 }
 
 function create_geolocate() {
@@ -12,12 +15,13 @@ function create_geolocate() {
 
 function browse_lookup(position) {
 	$("#nearbyParties").load(
-		"http://jbinney1.cs147.org/wedj/nearby.php",
+		"nearby.php",
 		{lat: position.coords.latitude, lon: position.coords.longitude},
 		function(){
 			$("#nearbyParties").listview("refresh");
+			$(".nearbyParty").click(join_nearby);
 			$("#browseNearby").html("Browse nearby parties");
-			$("#browseNearby").buttonMarkup({ icon: "gear" });
+			$("#browseNearby").buttonMarkup({ icon: "grid" });
 		});
 }
 

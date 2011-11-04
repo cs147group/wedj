@@ -128,25 +128,27 @@
        ?>
 		</ul>
 		</div>
-		      <script>
-					$(window).ready(function(){
-						$(".like-button").click( function(){
-							$("#songList").load("updatePlaylist.php", {songID: this.id, isUp: 1}, function(){
-								$("#songList").listview("refresh");
-							});
-						});
+		<script>
+			function registerVoteClickHandlers() {
+				$(".like-button").click( function(){
+					$("#songList").load("updatePlaylist.php", {songID: this.id, isUp: 1}, function(){
+						$("#songList").listview("refresh");
+						registerVoteClickHandlers();
 					});
-						
-				</script>
-				<script>
-					$(window).ready(function(){
-						$(".dislike-button").click( function(){
-							$("#songList").load("updatePlaylist.php", {songID: this.id, isUp: 0}, function(){
-								$("#songList").listview("refresh");
-							});
-						});
+				});
+				$(".dislike-button").click( function(){
+					$("#songList").load("updatePlaylist.php", {songID: this.id, isUp: 0}, function(){
+						$("#songList").listview("refresh");
+						registerVoteClickHandlers();
 					});
-				</script>
+				});
+			}
 
-</div>
+			$(window).ready(function(){
+				registerVoteClickHandlers();
+			});
+
+		</script>
+
+	</div>
 <?php include "footer.php"; ?>

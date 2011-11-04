@@ -7,7 +7,15 @@
 ?>
 
 	<?php
-				$playlistResult = mysql_query("SELECT * FROM playlist ORDER BY rating DESC");
+			   $ip = $_SERVER['REMOTE_ADDR'];
+                           $query = "SELECT party FROM users WHERE ip='$ip';";
+                           $result = mysql_query($query) or die(mysql_error());
+                           $row = mysql_fetch_array($result) or die(mysql_error());
+                           $partyID = $row['party'];
+
+
+                                $playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY rating DESC");
+
  				while ($row = mysql_fetch_array($playlistResult) ){
 			?>
 			<li><?php $currSongID = $row["songID"];

@@ -10,7 +10,19 @@
 	<h1>WeDJ</h1>
 	<a data-icon="info" data-rel="dialog" href="info.php">Info</a> </div>
 <div data-role="content">
-	<h2>Party Name</h2>
+        <?php
+           $ip = $_SERVER['REMOTE_ADDR'];
+	   $query = "SELECT party FROM users WHERE ip='$ip';";
+	   $result = mysql_query($query) or die(mysql_error());
+	   $row = mysql_fetch_array($result) or die(mysql_error());
+	   $partyID = $row['party'];
+	   $query2 = "SELECT * FROM parties WHERE id = $partyID";
+	   $result2 = mysql_query($query2) or die (mysql_error());
+	   $row2 = mysql_fetch_array($result2) or die(mysql_error());
+	   $partyName = $row2['name'];
+	   ?>
+
+	<h2><?php print $partyName ?></h2>
 	<a data-icon="plus" data-role="button" href="search.php">Add Songs</a>
 	<h3>Now Playing:</h3>
 	
@@ -77,7 +89,15 @@
 		<div id="songPlaylist">
 		<ul data-role="listview" id="songList">
 			<?php
-				$playlistResult = mysql_query("SELECT * FROM playlist ORDER BY rating DESC");
+
+			   $ip = $_SERVER['REMOTE_ADDR'];
+			   $query = "SELECT party FROM users WHERE ip='$ip';";
+			   $result = mysql_query($query) or die(mysql_error());
+			   $row = mysql_fetch_array($result) or die(mysql_error());
+			   $partyID = $row['party'];
+
+
+				$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY rating DESC");
  				while ($row = mysql_fetch_array($playlistResult) ){
 			?>
 			<li><?php $currSongID = $row["songID"];

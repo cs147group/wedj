@@ -7,7 +7,7 @@
     $db = mysql_connect("$dbHost", "$dbUser", "$dbPass");
     $db_found = mysql_select_db("$dbDatabase", $db);
 	$query = mysql_query("SELECT * FROM users", $db);
-	if(!$query) die("WHAT THE FUCK OMG");
+	if(!$query) die("WHAT THE OMG");
 	$numRows = mysql_num_rows($query);
 	$isHost = mysql_result($query, 0, "isAdmin");
 	$songQuery = mysql_query("SELECT * FROM playlist", $db);
@@ -25,4 +25,6 @@
 	$songQueryNew = mysql_query("SELECT * FROM songs WHERE songID =" . $greatestID, $db);
 	$name = mysql_result($songQueryNew, 0, "name");
 	$artist = mysql_result($songQueryNew, 0, "artist");
+	$songMP3 = mysql_result($songQueryNew, 0, "fileName");
+	$songMP3 = "music/" . $songMP3;
 ?>

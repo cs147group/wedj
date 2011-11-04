@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php 
 	include("connect_db.php"); 
-	include("set-song.php");
-	include "links.php"; 
 	include("information-gatherer.php");
+	//include("set-song.php");
+	include "links.php"; 
 ?>
 <div data-role="header">
 	<a data-icon="back" data-rel="dialog" href="confirm-leave.php">Leave Party</a>
@@ -58,7 +58,7 @@
       </div>
       <div class="jp-title">
         <ul>
-          <li>Bubble</li>
+          <li>Some Chords - Deadmau5</li>
         </ul>
       </div>
       <div class="jp-no-solution">

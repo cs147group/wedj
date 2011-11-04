@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php include "links.php"; ?>
 <?php
-	include("ip-identifier.php");
+	include("information-gatherer.php");
 ?>
 			<div data-role="header">
 				<a href="confirm-leave.php" data-icon="back" data-rel="dialog">Leave Party</a>
@@ -14,8 +14,8 @@
 				<h3>Now Playing:</h3>
 				<ul data-role="listview">
 					<li>
-						<h3>Song Title</h3>
-						<p>Song Artist</p>
+						<h3><?php print $name ?></h3>
+						<p><?php print $artist ?></p>
 						<span class="ui-li-count">0</span>
 					</li>
 				</ul>

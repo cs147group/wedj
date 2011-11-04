@@ -1,6 +1,5 @@
 <?php
 	$ipAddress = $_SERVER['REMOTE_ADDR'];
-	print $ipAddress . "\n";
 	$dbHost = "mysql.cs147.org";
     $dbUser = "jpulvera";
     $dbPass = "eymQqu6V";
@@ -23,12 +22,7 @@
 			$greatest = $rating;
 		}
 	}
-	print $greatest;
-	print "\n";
-	print $greatestID;
 	$songQueryNew = mysql_query("SELECT * FROM songs WHERE songID =" . $greatestID, $db);
 	$name = mysql_result($songQueryNew, 0, "name");
 	$artist = mysql_result($songQueryNew, 0, "artist");
-	print $name . "\n";
-	print $artist . "\n";	
 ?>

@@ -11,24 +11,31 @@
 	if(!$query) die("WHAT THE FUCK OMG");
 	$numRows = mysql_num_rows($query);
 	$isHost = mysql_result($query, 0, "isAdmin");
-	$songQuery = mysql_query("SELECT * FROM playlist", $db);
-	$numRows = mysql_num_rows($songQuery);
-	$greatest = -10000;
-	$rating = 0; 
-	$greatestID = 0;
-	for($i = 0; $i < $numRows; $i++){
-		$rating = mysql_result($songQuery, $i, "rating");
-		if($rating > $greatest){
-			$greatestID = mysql_result($songQuery, $i, "songID");
-			$greatest = $rating;
+	if(!$isHost){
+		$songQuery = mysql_query("SELECT * FROM playlist", $db);
+		$numRows = mysql_num_rows($songQuery);
+		$greatest = -10000;
+		$rating = 0; 
+		$greatestID = 0;
+		for($i = 0; $i < $numRows; $i++){
+			$rating = mysql_result($songQuery, $i, "rating");
+			if($rating > $greatest){
+				$greatestID = mysql_result($songQuery, $i, "songID");
+				$greatest = $rating;
+			}
 		}
+		print $greatest;
+		print "\n";
+		print $greatestID;
 	}
-	print $greatest;
-	print "\n";
-	print $greatestID;
-	$songQueryNew = mysql_query("SELECT * FROM songs WHERE songID =" . $greatestID, $db);
-	$name = mysql_result($songQueryNew, 0, "name");
-	$artist = mysql_result($songQueryNew, 0, "artist");
-	print $name . "\n";
-	print $artist . "\n";	
+		$songQueryNew = mysql_query("SELECT * FROM songs WHERE songID =" . $greatestID, $db);
+		$name = mysql_result($songQueryNew, 0, "name");
+		$artist = mysql_result($songQueryNew, 0, "artist");
+		print $name . "\n";
+		print $artist . "\n";
+	if($isHost){
+	
+	}
+	
+	
 ?>

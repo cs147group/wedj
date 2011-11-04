@@ -15,8 +15,14 @@ $query =
 $result = mysql_query($query) or die(mysql_error());
 mysql_close();
 
+$noPartiesNearby = true;
 while ($row = mysql_fetch_array($result)) {
-	echo '<li><a href="party.php?id='.$row['id'].'">'.$row['name'].'</a></li>';
+	$noPartiesNearby = false;
+	echo '<li><a href="#" class="nearbyParty" id="'.$row['id'].'">'.$row['name'].'</a></li>';
+}
+
+if ($noPartiesNearby) {
+	echo '<p align="center">No parties were found nearby.</p>';
 }
 
 ?>

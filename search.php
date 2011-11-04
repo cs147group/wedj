@@ -84,6 +84,7 @@
 						});
 						$(".addSong").click( function(){
 							var id = this.id;
+					                alert("Song added successfully");
 							$("#none").load("addSong.php", {songID: id});
 						});
 					});

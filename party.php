@@ -11,8 +11,7 @@
 	<a data-icon="info" data-rel="dialog" href="info.php">Info</a> </div>
 <div data-role="content">
         <?php
-	   $songID = $_POST["songID"];
-
+           $ip = $_SERVER['REMOTE_ADDR'];
 	   $query = "SELECT party FROM users WHERE ip='$ip';";
 	   $result = mysql_query($query) or die(mysql_error());
 	   $row = mysql_fetch_array($result) or die(mysql_error());

@@ -1,26 +1,16 @@
-function initiate_geolocation() {
+function browse_geolocate() {
 	$("#browseNearby").html("Loading nearby parties...");
 	$("#browseNearby").buttonMarkup({ icon: "gear" });
-	navigator.geolocation.getCurrentPosition(handle_geolocation_query, handle_geolocation_error);
+	navigator.geolocation.getCurrentPosition(browse_lookup);
 }
 
-function handle_geolocation_error(error) {
-	switch(error.code) {
-		case error.PERMISSION_DENIED: alert("user did not share geolocation data");
-		break;
-
-		case error.POSITION_UNAVAILABLE: alert("could not detect current position");
-		break;
-
-		case error.TIMEOUT: alert("retrieving position timed out");
-		break;
-
-		default: alert("unknown error");
-		break;
-	}
+function create_geolocate() {
+	navigator.geolocation.getCurrentPosition(try_create, function(){
+		try_create({coords: {latitude: 360, longitude: 360}});
+	});
 }
 
-function handle_geolocation_query(position) {
+function browse_lookup(position) {
 	$("#nearbyParties").load(
 		"nearby.php",
 		{lat: position.coords.latitude, lon: position.coords.longitude},
@@ -50,6 +40,21 @@ function try_join(partyName) {
 				window.location = "party.php";
 			} else {
 				window.location = "error-join.php";
+			}
+		}
+	});
+}
+
+function try_create(position) {
+	$.ajax({
+		url: "create.php",
+		data: {name: $("#newName").val(), lat: position.coords.latitude, lon: position.coords.longitude},
+		type: "POST",
+		success: function(data, ignored, ignored2){
+			if (data == "OK") {
+				window.location = "party.php";
+			} else {
+				window.location = "error-new.php?suggestion=" + encodeURIComponent(data);
 			}
 		}
 	});

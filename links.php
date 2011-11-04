@@ -4,10 +4,10 @@
 		<link rel="shortcut icon" href="images/favicon.ico">
 		<link rel="apple-touch-icon" href="images/appIcon.png">
 		<link rel="apple-touch-icon-precomposed" href="images/appIcon.png">
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
-		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body>

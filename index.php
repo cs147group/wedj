@@ -6,14 +6,15 @@
 			</div>
 			<div data-role="content">
 				<h2>Join a party</h2>
-				<div data-role="collapsible">
-					<h3>Browse nearby parties</h3>
-					<ul data-role="listview" data-inset="true">
-						<li><a href="party.php">Party Name 1</a></li>
-						<li><a href="party.php">Party Name 2</a></li>
-						<li><a href="party.php">Party Name 3</a></li>
+				<a href="#" data-role="button" data-icon="gear" id="browseNearby">Browse nearby parties</a>
+					<ul data-role="listview" data-inset="true" id="nearbyParties">
 					</ul>
-				</div>
+				<script>
+					$(window).ready(function(){
+						$("#browseNearby").click(initiate_geolocation);
+					});
+				</script>
+				</script>
 				<form action="party.php" method="get">
 					<label for="name">Or enter a party name:</label>
 					<input type="search" name="partyname" id="search" value=""  />

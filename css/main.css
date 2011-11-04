@@ -1,7 +1,11 @@
-﻿.ui-controlgroup-horizontal {
-	float:right;
-	margin:-45px 0px 0px 0px;
-}
-.ui-controlgroup-horizontal .ui-btn {
-	padding: 8px;
+﻿.ui-controlgroup-horizontal {
+	float:right;
+	margin:-45px 0px 0px 0px;
+}
+.ui-controlgroup-horizontal .ui-btn {
+	padding: 8px;
+}
+
+#nearbyParties {
+	margin: 10px 0 10px 8px;
 }

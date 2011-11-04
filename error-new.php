@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <?php include "links.php" ?>
 			<div data-role="header">
-				<h1>Dialog</h1>
+				<h1>Whoops!</h1>
 			</div>
 			<div data-role="content">
-				<h1>Error</h1>
-				<p>Sorry, that name is already taken.  you can choose a similar name:</p>
-				<form action="party.php" method="get">
-					<input type="text" name="name" id="name" value="Different Party Name" />
-					<button type="submit" name="submit" value="submit-value">Create</button>
-				</form>
+				<p align="center">Sorry, that name is already taken. You can choose a similar name:</p>
+				<input type="text" id="newName" value="<?php echo $_GET['suggestion']; ?>" />
+				<a href="#" data-role="button" data-icon="star" id="createAlt">Create</a>
 				<a href="#" data-role="button" data-rel="back">Cancel</a>
 			</div>
 		</div>
 	</body>
+	<script>
+		$(window).ready(function(){
+			$("#createAlt").click(create_geolocate);
+		});
+	</script>
 </html>

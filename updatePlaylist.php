@@ -1,20 +1,24 @@
 <?php
 include("connect_db.php");
 
-$songID = $_POST["song"];
-$partyID = $_POST["party"];
-$rating = 1;
-$time = time();
 
+$thing = $_POST["bsubmit"];
+$beginning = substr($thing, 0, 4);
+if ($beginning == "down"){
+   echo "Downvoting song # ".substr($thing,10)." by 1 vote";
+  $song = substr($thing,10);
+  $result = mysql_query("UPDATE playlist SET rating = rating - 1 WHERE songID = $song");
 
-echo "song id is $songID";
+} else {
+  echo "Incrementing song # ".$thing."by 1 vote";
+  $result = mysql_query("UPDATE playlist SET rating = rating + 1 WHERE songID = $thing");
 
-$result = mysql_query("INSERT INTO playlist(songID, partyID, rating, time) VALUES ($songID,$partyID,$rating,$\
-time)");
+}
+
 
 if ($result) {
-echo "successfully able to insert new song into playlist table!";
+   "successfully able to update your vote!";
 } else {
-  echo "couldn't add song into playlist table. bummer.";
+  echo "couldn't update likes in the playlist table. bummer.";
 }
 ?>

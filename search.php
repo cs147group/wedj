@@ -54,9 +54,17 @@
 								$("#songResults").listview("refresh");
 							});
 						});
-						$(".addSong").click( function(){
-							var id = this.id;
-							$("#none").load("addSong.php", {songID: id});
+						$(".addSong").live("click", function(){
+							var button = this;
+							$("#none").load("addSong.php", {songID: button.id}, function(){
+								// can't add again
+								$(button).unbind("click");
+								// remove + button
+								$(button).html("");
+								// gray out text
+								$(button).prev().find("h3").css("color", "#ddd");
+								$(button).prev().find("p").css("color", "#ddd");
+							});
 						});
 					});
 				</script>

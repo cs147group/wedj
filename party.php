@@ -8,38 +8,43 @@
 <div data-role="header">
 	<a data-icon="back" data-rel="dialog" href="confirm-leave.php">Leave Party</a>
 	<h1>WeDJ</h1>
-	<a data-icon="info" data-rel="dialog" href="info.php">Info</a> </div>
+	<a data-icon="info" data-rel="dialog" href="info.php">Info</a>
+</div>
 <div data-role="content">
-        <?php
-           $ip = $_SERVER['REMOTE_ADDR'];
-	   $query = "SELECT party FROM users WHERE ip='$ip';";
-	   $result = mysql_query($query) or die(mysql_error());
-	   $row = mysql_fetch_array($result) or die(mysql_error());
-	   $partyID = $row['party'];
-	   $query2 = "SELECT * FROM parties WHERE id = $partyID";
-	   $result2 = mysql_query($query2) or die (mysql_error());
-	   $row2 = mysql_fetch_array($result2) or die(mysql_error());
-	   $partyName = $row2['name'];
-	   ?>
-
-	<h2><?php print $partyName ?></h2>
+<?php
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$query = "SELECT party FROM users WHERE ip='$ip';";
+	$result = mysql_query($query) or die(mysql_error());
+	$row = mysql_fetch_array($result) or die(mysql_error());
+	$partyID = $row['party'];
+	$query2 = "SELECT * FROM parties WHERE id = $partyID";
+	$result2 = mysql_query($query2) or die (mysql_error());
+	$row2 = mysql_fetch_array($result2) or die(mysql_error());
+	$partyName = $row2['name'];
+?>
+	<h2><?php echo $partyName; ?></h2>
 	<a data-icon="plus" data-role="button" href="search.php">Add Songs</a>
 	<h3>Now Playing:</h3>
 	
-	<?php if(!$isHost){?>
+<?php
+	if (!$isHost) {
+?>
 	<ul data-role="listview">
 		<li>
-			<h3><?php print $name ?></h3>
-			<p><?php print $artist ?></p>
+			<h3><?php echo $name; ?></h3>
+			<p><?php echo $artist; ?></p>
 			<span class="ui-li-count">0</span> 
 		</li>
 	</ul>
-	<?php }?>
+<?php
+	}
+?>
 	
 	
 	<?php 
-		if($isHost){?>
-		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+		if ($isHost) {
+	?>
+	<div id="jquery_jplayer_1" class="jp-jplayer"></div>
   <div id="jp_container_1" class="jp-audio">
     <div class="jp-type-single">
       <div class="jp-gui jp-interface">
@@ -70,7 +75,7 @@
       </div>
       <div class="jp-title">
         <ul>
-          <li>Some Chords - Deadmau5</li>
+          <li><?php echo $name . " - " . $artist; ?></li>
         </ul>
       </div>
       <div class="jp-no-solution">
@@ -79,54 +84,44 @@
       </div>
     </div>
   </div>
-	<?php }?>
-	
-	
-	
+<?php
+	}
+?>
 	
 	<br />
 		<h3>Playlist</h3>
 		<div id="songPlaylist">
-		<ul data-role="listview" id="songList">
-			<?php
-
-			   $ip = $_SERVER['REMOTE_ADDR'];
-			   $query = "SELECT party FROM users WHERE ip='$ip';";
-			   $result = mysql_query($query) or die(mysql_error());
-			   $row = mysql_fetch_array($result) or die(mysql_error());
-			   $partyID = $row['party'];
-
-
-				$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY rating DESC");
- 				while ($row = mysql_fetch_array($playlistResult) ){
-			?>
-			<li><?php $currSongID = $row["songID"];
-            $currRating = $row["rating"];
-			$songsResult =mysql_query("SELECT * FROM songs WHERE songID = $currSongID");
-			while ($row = mysql_fetch_array($songsResult)){
-
-			?>
-			<div>
+			<ul data-role="listview" id="songList">
 				<?php
-					$song = $currSongID;
- ?>
-			</div>
-			<h3><?php echo $row["name"];?></h3>
-			<p><?php echo $row["artist"];?></p>
-			<span class="ui-li-count"><?php echo $currRating;  ?></span>
-			<div data-role="controlgroup" data-type="horizontal">
-			<?php 
-				echo '<a data-icon="arrow-u" data-iconpos="notext" data-role="button" href="#" class="like-button" id ="' . $currSongID . '"></a>';
-				echo '<a data-icon="arrow-d" data-iconpos="notext" data-role="button" href="#" class="dislike-button" id ="' . $currSongID . '"></a>';
-			?>
-				</div>
-			<?php
-                }
-    		?></li>
-			<?php
+					$ip = $_SERVER['REMOTE_ADDR'];
+					$query = "SELECT party FROM users WHERE ip='$ip';";
+					$result = mysql_query($query) or die(mysql_error());
+					$row = mysql_fetch_array($result) or die(mysql_error());
+					$partyID = $row['party'];
+					
+					$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY rating DESC");
+					while ($row = mysql_fetch_array($playlistResult)) {
+						$currSongID = $row["songID"];
+						$currRating = $row["rating"];
+						$songsResult =mysql_query("SELECT * FROM songs WHERE songID = $currSongID");
+						if ($row = mysql_fetch_array($songsResult)) {
+				?>
+				<li>
+					<h3><?php echo $row["name"]; ?></h3>
+					<p><?php echo $row["artist"]; ?></p>
+					<span class="ui-li-count"><?php echo $currRating; ?></span>
+					<div data-role="controlgroup" data-type="horizontal">
+						<?php 
+							echo '<a data-icon="arrow-u" data-iconpos="notext" data-role="button" href="#" class="like-button" id ="' . $currSongID . '"></a>';
+							echo '<a data-icon="arrow-d" data-iconpos="notext" data-role="button" href="#" class="dislike-button" id ="' . $currSongID . '"></a>';
+						?>
+					</div>
+				</li>
+				<?php
+					}
 				}
-       ?>
-		</ul>
+				?>
+			</ul>
 		</div>
 		<script>
 			function registerVoteClickHandlers() {

@@ -17,7 +17,7 @@
       $("#jquery_jplayer_1").jPlayer({
         ready: function () {
           $(this).jPlayer("setMedia", {
-            mp3: <?php print '"' . $songMP3 . '"'; ?>
+            mp3: <?php print '"' . $songURL . '"'; ?>
           });
         },
         swfPath: "/js",

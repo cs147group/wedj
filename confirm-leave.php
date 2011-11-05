@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <?php include "links.php" ?>
 			<div data-role="header">
-				<h1>Dialog</h1>
+				<h1>Leave Party</h1>
 			</div>
 			<div data-role="content">
-				<h1>Are you sure you want to leave the party?</h1>
-				<p>Leaving the party will...</p>
-				<a href="index.php" data-role="button">Yes</a>
-				<a href="#" data-role="button" data-rel="back">No</a>
+				<p align="center">Are you sure you want to leave the party?
+<?php if ($_GET['host']) { ?>
+				You will no longer be able to play music from this playlist.
+<?php } ?>
+				</p>
+				<a href="#" data-role="button" id="confirmLeave">Leave</a>
+				<a href="#" data-role="button" data-rel="back">Stay</a>
 			</div>
+			<script>
+				$(window).ready(function(){
+					$("#confirmLeave").click(function(){
+						window.location = "index.php";
+					});
+				});
+			</script>
 		</div>
 	</body>
 </html>

@@ -6,7 +6,7 @@
 	include "links.php"; 
 ?>
 <div data-role="header">
-	<a data-icon="back" data-rel="dialog" href="confirm-leave.php">Leave Party</a>
+	<a data-icon="back" href="confirm-leave.php?host=<?php echo $isHost; ?>">Leave Party</a>
 	<h1>WeDJ</h1>
 	<a data-icon="info" data-rel="dialog" href="info.php">Info</a>
 </div>

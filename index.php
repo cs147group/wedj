@@ -4,7 +4,7 @@
 <?php include "links.php"; ?>
 			<div data-role="header">
 				<h1>WeDJ</h1>
-				<a href="info.php" data-icon="info" data-rel="dialog">Info</a>
+				<a href="info.php" data-icon="info">Info</a>
 			</div>
 			<div data-role="content">
 				<h2>Join a party</h2>

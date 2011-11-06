@@ -29,7 +29,7 @@ foreach ($rows as $index => $row) {
 		$class_extras = $class_extras . " ui-corner-bottom ui-controlgroup-last";
 	}
 	echo
-		'<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-down-c ui-btn-up-c' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">' .
+		'<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">' .
 			'<span class="ui-btn-inner' . $class_extras . '" aria-hidden="true">' .
 				'<span class="ui-btn-text">' . 
 					'<h3 class="ui-li-heading">' . $row['name'] . '</h3>' . 

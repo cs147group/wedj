@@ -5,11 +5,11 @@
 ?>
 			<div data-role="content">
 				<h3>Search for songs</h3>
-				<label for="songtitle">Enter a song title:</label>
-				<input type="search" name="songtitle" id="search" value="" />
-				<a href="#" data-role="button" data-icon="search" id="searchSongs">Search</a>
-				<ul data-role="listview" data-split-icon="plus" data-inset="true" id="songResults">
-				</ul>
+				<label for="search">Enter a song title or artist name:</label>
+				<input type="search" id="search" value="" />
+				<a href="#" data-role="button" id="searchButton">Search</a>
+				<div data-role="controlgroup" id="searchResults">
+				</div>
 				<h3>Browse songs by genre</h3>
 				<div data-role="collapsible-set">
 					<?php
@@ -18,52 +18,43 @@
 					?>
 					<div data-role="collapsible">
 						<h3><?php echo $genreName; ?></h3>
-						<ul data-role="listview" data-split-icon="plus" data-inset="true">
+						<div data-role="controlgroup">
 							<?php
 							   $genreResult = mysql_query("SELECT * FROM songs WHERE genre = '$genreIndex'");
 							   while ($row = mysql_fetch_array($genreResult)) {
-							?>
-							<li>
-								<?php
 									$songTitle = $row["name"];
 							  	$artist = $row["artist"];
 									$songID = $row["songID"];
-							  ?>
-								<a href="#">
-									<h3><?php echo $songTitle; ?></h3>
-									<p><?php echo $artist; ?></p>
+							?>
+								<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong" id="<?php echo $songID; ?>">
+									<h3 class="ui-li-heading"><?php echo $songTitle; ?></h3>
+									<p class="ui-li-desc"><?php echo $artist; ?></p>
 								</a>
-								<a href="#" class="addSong" id="<?php echo $songID; ?>"></a>
-							</li>
 							<?php
 								}
 							?>
-						</ul>
+						</div>
 					</div>
 					<?php
 						}
 					?>
 				</div>
-				<div id="none"></div>
+				<div id="none" style="display:none"></div>
 				<script>
 					$(window).ready(function(){
-						$("#searchSongs").click( function(){
-							var name = $("#search").val();
-							$("#songResults").load("searchsong.php", {songName: name},
-							function(){
-								$("#songResults").listview("refresh");
-							});
+						$("#searchButton").click(function(){
+							$("#searchResults").load("searchsong.php", {searchText: $("#search").val()});
 						});
 						$(".addSong").live("click", function(){
 							var button = this;
 							$("#none").load("addSong.php", {songID: button.id}, function(){
 								// can't add again
 								$(button).unbind("click");
-								// remove + button
-								$(button).html("");
-								// gray out text
-								$(button).prev().find("h3").css("color", "#ddd");
-								$(button).prev().find("p").css("color", "#ddd");
+								// change to check button
+								$(button).find(".ui-icon").removeClass("ui-icon-plus");
+								$(button).find(".ui-icon").addClass("ui-icon-check");
+								// disable button
+								$(button).addClass("ui-disabled");
 							});
 						});
 					});

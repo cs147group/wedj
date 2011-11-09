@@ -6,4 +6,3 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-		<script type="text/javascript" src="js/script.js"></script>

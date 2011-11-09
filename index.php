@@ -29,7 +29,18 @@
 		$(window).ready(function(){
 			$("#browseNearby").click(browse_geolocate);
 			$("#join").click(join_manual);
+		        $("#joinName").keyup(function(event){
+		           if(event.keyCode == 13) {
+		             join_manual();
+		           }
+		        });
 			$("#create").click(create_geolocate);
+                        $("#newName").keyup(function(event){
+                           if(event.keyCode == 13) {
+                             create_geolocate();
+                           }
+                        });
+
 		});
 	</script>
 </html>

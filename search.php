@@ -54,6 +54,12 @@
 						$("#searchButton").click(function(){
 							$("#searchResults").load("searchsong.php", {searchText: $("#search").val()});
 						});
+					        $("#search").keyup(function(event){           
+					           if(event.keyCode == 13) {
+					               $("#searchResults").load("searchsong.php", {searchText: $("#search").val()});
+					           }
+					        });
+
 						$(".addSong").live("click", function(){
 							var button = this;
 							$("#none").load("addSong.php", {songID: button.id}, function(){

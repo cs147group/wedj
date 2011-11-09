@@ -4,6 +4,13 @@ $partyName = $_POST['name'];
 $lat = $_POST['lat'];
 $lon = $_POST['lon'];
 
+// No blank party names
+if ($partyName == "") {
+	$partyName = "Party";
+}
+// Max length of party name
+$partyName = substr($partyName, 0, 250);
+
 mysql_connect("mysql.cs147.org","jpulvera","eymQqu6V") or die(mysql_error());
 mysql_select_db("jpulvera_mysql") or die(mysql_error());
 $query =

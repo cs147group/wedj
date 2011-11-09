@@ -3,6 +3,15 @@
 	include "header.php";
 	include "connect_db.php";
 ?>
+<html>
+	<head>
+		<?php include "links.php"; ?>
+	</head>
+	<body>
+		<div data-role="page" data-add-back-btn="true">
+			<div data-role="header">
+				<h1>WeDJ</h1>
+			</div>	
 			<div data-role="content">
 				<h3>Search for songs</h3>
 				<label for="search">Enter a song title or artist name:</label>

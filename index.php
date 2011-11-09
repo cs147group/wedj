@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-
-<!-- hi  -->
-<?php include "links.php"; ?>
+<html>
+	<head>
+		<?php include "links.php"; ?>
+	</head>
+	<body>
+		<div data-role="page" data-add-back-btn="true">
 			<div data-role="header">
 				<h1>WeDJ</h1>
 				<a href="info.php" data-icon="info">Info</a>

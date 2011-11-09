@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<?php include "links.php"; ?>
-		<script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="js/home.js"></script>
 	</head>
 	<body>
 		<div data-role="page" data-add-back-btn="true">

@@ -5,7 +5,7 @@
 	$ip = $_SERVER['REMOTE_ADDR'];
 
 
-
+			if ($id != null) {
         $alreadyVotedQuery = "SELECT * FROM votes WHERE ip = '$ip' AND songID = $id";
         $votedResult = mysql_query($alreadyVotedQuery) or die(mysql_error());
 
@@ -38,7 +38,7 @@
                  mysql_query($updateVoteQuery) or die(mysql_error());
           } else echo "you already upvoted and want to upvote again NUH UH";
         }
-
+			}
 
 
 

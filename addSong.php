@@ -21,12 +21,12 @@ if ($row = mysql_fetch_array($result)) {
 		$insertVoteQuery = "INSERT INTO votes (ip, songID, isUpvote) VALUES ('$ip', '$songID', '1')";
                 mysql_query($insertVoteQuery) or die(mysql_error());
 
-		echo "Success! The song has been added to the playlist.";
+		echo 'ADDED';
 	} else {
-		echo "The song is already in the playlist.";
+		echo 'ALREADY_IN_PLAYLIST';
 	}
 } else {
-	echo "You're not in a party, fail.";
+	echo 'NO_PARTY';
 }
 
 ?>

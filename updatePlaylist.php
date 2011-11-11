@@ -26,6 +26,7 @@
           $prevVote = $voteRow['isUpvote'];
           if($isUp == 0){
               if($prevVote == 1){ //They already upvoted once but are now changing to a downvote
+
                       $result = mysql_query("UPDATE playlist SET rating = rating - 2 WHERE songID = $id");
                       $updateVoteQuery = "UPDATE votes SET isUpvote = '0' WHERE ip = '$ip' AND songID = '$id' AND isUpvote = '1' LIMIT 1";
                       mysql_query($updateVoteQuery) or die(mysql_error());
@@ -35,6 +36,7 @@
                  $updateVoteQuery = "UPDATE votes SET isUpvote = '1' WHERE ip = '$ip' AND songID = '$id' AND isUpvote = '0'  LIMIT 1";
                  mysql_query($updateVoteQuery) or die(mysql_error());
           } 
+
         }
 			}
 

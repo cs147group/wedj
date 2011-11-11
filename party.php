@@ -152,8 +152,10 @@ $(document).ready(function(){
 	$partyID = $row['party'];
 	
 	$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY rating DESC");
-	while ($row = mysql_fetch_array($playlistResult)) {
-		$currSongID = $row["songID"];
+   $isFirst = 1;
+while ($row = mysql_fetch_array($playlistResult)) {
+if($isFirst ==0){		
+$currSongID = $row["songID"];
 		$currRating = $row["rating"];
 		$songsResult =mysql_query("SELECT * FROM songs WHERE songID = $currSongID");
 		if ($row = mysql_fetch_array($songsResult)) {
@@ -171,6 +173,8 @@ $(document).ready(function(){
 				</li>
 <?php
 		}
+}
+$isFirst = 0;
 	}
 ?>
 			</ul>

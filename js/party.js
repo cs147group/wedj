@@ -1,5 +1,13 @@
 
 $(window).ready(function(){
+
+	 $("#jquery_jplayer_1").bind($.jPlayer.event.ended, function(event) {
+	  $("#JPLAYA").load("updatePlayer.php", {songID: songIDNum, partyIDNum1: partyIDNum, hasEnded: 1});
+	   $("#songList").load("updatePlaylist.php", {songID: songIDNum , isUp: 1}, function(){
+			$("#songList").listview("refresh");
+		});
+  });
+
 	// Voting click handlers
 	$(".like-button").live("click", function(){
 		$("#songList").load("updatePlaylist.php", {songID: this.id, isUp: 1}, function(){
@@ -65,7 +73,12 @@ $(window).ready(function(){
 				// disable button
 				$(button).addClass("ui-disabled");
 				// refresh playlist if was added
+				var timesClicked = 0;
 				if (data == "ADDED") {
+					/*if(timesClicked ==0){
+					$("#JPLAYA").load("updatePlayer.php", {songID: button.id, partyIDNum1: partyIDNum, hasEnded: 0});
+					timesClicked++;
+					}*/
 					$("#songList").load("updatePlaylist.php", function(){
 						$("#songList").listview("refresh");
 					});

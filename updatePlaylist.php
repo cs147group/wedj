@@ -48,7 +48,9 @@
 		$partyID = $row['party'];
 		$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY rating DESC");
 		// Loop through all songs in playlist
+		$isFirst = 1;
  		while ($row = mysql_fetch_array($playlistResult)) {
+ 		if($isFirst ==0){ 
 			$currSongID = $row["songID"];
       $currRating = $row["rating"];
 			$songResult =mysql_query("SELECT * FROM songs WHERE songID = $currSongID");
@@ -75,9 +77,8 @@
 </li>
 <?php
       }
-		}
+     		}	
+$isFirst = 0;
+	}
 	}
 ?>
-
-
-

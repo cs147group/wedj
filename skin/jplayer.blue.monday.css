@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Skin for jPlayer Plugin (jQuery JavaScript Library)
  * http://www.happyworm.com/jquery/jplayer
  *
@@ -31,7 +31,7 @@ div.jp-video {
 	position:relative;
 }
 div.jp-audio {
-	width:420px;
+	width:290px;
 }
 div.jp-video-270p {
 	width:480px;
@@ -194,8 +194,8 @@ div.jp-audio div.jp-progress {
 	height:15px;
 }
 div.jp-audio div.jp-type-single div.jp-progress {
-	left:110px;
-	width:186px;
+	left:104px;
+	width:170px;
 }
 div.jp-audio div.jp-type-playlist div.jp-progress {
 	left:166px;
@@ -319,7 +319,7 @@ div.jp-audio div.jp-time-holder {
 	top:50px;
 }
 div.jp-audio div.jp-type-single div.jp-time-holder {
-	left:110px;
+	left:95px;
 	width:186px;
 }
 div.jp-audio div.jp-type-playlist div.jp-time-holder {

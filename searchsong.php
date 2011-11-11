@@ -38,9 +38,9 @@ foreach ($rows as $index => $row) {
 	$songID = $row['songID'];
 	$isInPlaylistQuery = "SELECT * FROM playlist WHERE songID = '$songID' AND partyID = '$partyID'";
 	$isInPlaylistResult = mysql_query($isInPlaylistQuery);
-	$firstLine = '<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c ui-disabled' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">';	
+	$firstLine = '<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">';	
 	if(mysql_num_rows($isInPlaylistResult) != 0) { //already in playlist; need to gray out the result
-		$firstLine = '<a href="#" data-role="button" data-icon="check" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">';	
+		$firstLine = '<a href="#" data-role="button" data-icon="check" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c ui-disabled' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">';	
 	}
 	
 	echo

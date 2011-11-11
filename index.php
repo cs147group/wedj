@@ -34,6 +34,8 @@
 					$ip = $_SERVER['REMOTE_ADDR'];
 					$query = "DELETE FROM votes WHERE ip = '$ip'";
 					$result = mysql_query($query) or die (mysql_error());
+					$query = "DELETE FROM users WHERE ip = '$ip'";
+					$result = mysql_query($query) or die (mysql_error());
 			?>
 			$("#browseNearby").click(browse_geolocate);
 			$("#join").click(join_manual);

@@ -65,7 +65,7 @@ $(window).ready(function(){
 				// disable button
 				$(button).addClass("ui-disabled");
 				// refresh playlist if was added
-				if (data == "\nADDED") {
+				if (data == "ADDED") {
 					$("#songList").load("updatePlaylist.php", function(){
 						$("#songList").listview("refresh");
 					});

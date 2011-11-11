@@ -1,17 +1,25 @@
 <?php
 
-$partyName = $_POST['name'];
+include "connect_db.php";
 
-mysql_connect("mysql.cs147.org","jpulvera","eymQqu6V") or die(mysql_error());
-mysql_select_db("jpulvera_mysql") or die(mysql_error());
-$query =
-	"SELECT * " .
-	"FROM parties " .
-	"WHERE name = '" . mysql_real_escape_string($partyName) . "'";
-$result = mysql_query($query) or die(mysql_error());
+$partyID = mysql_real_escape_string($_POST['id']);
 
-if ($row = mysql_fetch_array($result)) {
-	$partyID = $row['id'];
+if ($partyID == "NO_ID") {
+	$partyName = $_POST['name'];
+	// Escape html characters
+	$partyName = htmlspecialchars($partyName);
+	// Max length of party name
+	$partyName = substr($partyName, 0, 255);
+	$query =
+		"SELECT * " .
+		"FROM parties " .
+		"WHERE name = '" . mysql_real_escape_string($partyName) . "'";
+	$result = mysql_query($query) or die(mysql_error());
+	if ($row = mysql_fetch_array($result)) {
+		$partyID = $row['id'];
+	}
+}
+if ($partyID != "NO_ID") {
 	$ip = $_SERVER['REMOTE_ADDR'];
 	$query =
 		"SELECT * " .
@@ -33,7 +41,7 @@ if ($row = mysql_fetch_array($result)) {
 	$result = mysql_query($query) or die(mysql_error());
 	echo 'OK';
 } else {
-	echo 'NOT FOUND';
+	echo $partyID;
 }
 
 mysql_close();

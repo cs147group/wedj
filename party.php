@@ -29,6 +29,7 @@ $(document).ready(function(){
 	</head>
 	<body>
 		<div data-role="page" data-add-back-btn="true">
+
 <!-- Leave party dialog -->
 			<div id="confirmDiv" style="height:0px;overflow:hidden">
 				<div data-role="header">
@@ -46,26 +47,21 @@ $(document).ready(function(){
 				</div>
 			</div>
 
-<!-- Info dialog 
+<!-- Info dialog -->
 			<div id="infoDiv" style="height:0px;overflow:hidden">
 				<div data-role="header">
 					<a data-icon="arrow-l" href="#" id="closeInfo">Back</a>
 					<h1>Information</h1>
 				</div>
-				<div data-role="content">
-					<h1>Tutorial</h1>
-					<p>Here is a tutorial for WeDJ.</p>
-				</div>
+				<?php include "info-content.php" ?>
 			</div>
--->
+
 <!-- Playlist section -->
-
-
 			<div id="partyDiv" style="height:100%;overflow:hidden">
 				<div data-role="header">
 				<a data-icon="back" href="#" id="leaveButton">Leave Party</a>
 				<h1>WeDJ</h1>
-				<a data-icon="info" href="info.php">Info</a>
+				<a data-icon="info" href="#" id="infoButton">Info</a>
 			</div>
 			<div data-role="content">
 <?php

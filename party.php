@@ -68,7 +68,7 @@ $(document).ready(function(){
 <?php
 	$ip = $_SERVER['REMOTE_ADDR'];
 	$query = "SELECT party FROM users WHERE ip='$ip';";
-	$result = mysql_query($query) or die(mysql_error());
+	$result = mysql_query($query) or die (mysql_error());
 	$row = mysql_fetch_array($result) or die(mysql_error());
 	$partyID = $row['party'];
 	$query2 = "SELECT * FROM parties WHERE id = $partyID";
@@ -206,11 +206,18 @@ $(document).ready(function(){
 									$songTitle = $row["name"];
 							  	$artist = $row["artist"];
 									$songID = $row["songID"];
+									$isInPlaylistQuery = "SELECT * FROM playlist WHERE songID = '$songID' AND partyID = '$partyID'";
+									$isInPlaylistResult = mysql_query($isInPlaylistQuery);
+									//this isInPlaylist & if/else statement are to gray out songs in the playlist from the search results
+									if(mysql_num_rows($isInPlaylistResult) == 0) {
 							?>
-								<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong" id="<?php echo $songID; ?>">
-									<h3 class="ui-li-heading"><?php echo $songTitle; ?></h3>
-									<p class="ui-li-desc"><?php echo $artist; ?></p>
-								</a>
+										<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong" id="<?php echo $songID; ?>">
+							<?php	} else { ?>
+										<a href = "#" data-role = "button" data-icon="check" data-iconpos="right" class="addSong ui-disabled" id="<?php echo $songID;?>">
+							<?php		} ?>
+											<h3 class="ui-li-heading"><?php echo $songTitle; ?></h3>
+											<p class="ui-li-desc"><?php echo $artist; ?></p>
+										</a>
 							<?php
 								}
 							?>

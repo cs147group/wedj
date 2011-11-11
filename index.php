@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php 
+	include("connect_db.php"); 
+?>
 <html>
 	<head>
 		<?php include "links.php"; ?>
@@ -27,6 +30,11 @@
 	</body>
 	<script>
 		$(window).ready(function(){
+			<?php //this is so that when you leave a party, your song-vote pairs don't stick with you
+					$ip = $_SERVER['REMOTE_ADDR'];
+					$query = "DELETE FROM votes WHERE ip = '$ip'";
+					$result = mysql_query($query) or die (mysql_error());
+			?>
 			$("#browseNearby").click(browse_geolocate);
 			$("#join").click(join_manual);
 		        $("#joinName").keyup(function(event){

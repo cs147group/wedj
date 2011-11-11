@@ -28,8 +28,23 @@ foreach ($rows as $index => $row) {
 	if ($index == $lastIndex) {
 		$class_extras = $class_extras . " ui-corner-bottom ui-controlgroup-last";
 	}
+	
+	//need party ID to check playlist
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$queryUser = "SELECT party FROM users WHERE ip='$ip';";
+	$resultUser = mysql_query($queryUser) or die(mysql_error());
+	$rowUser = mysql_fetch_array($resultUser) or die(mysql_error());
+	$partyID = $rowUser['party'];
+	$songID = $row['songID'];
+	$isInPlaylistQuery = "SELECT * FROM playlist WHERE songID = '$songID' AND partyID = '$partyID'";
+	$isInPlaylistResult = mysql_query($isInPlaylistQuery);
+	$firstLine = '<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c ui-disabled' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">';	
+	if(mysql_num_rows($isInPlaylistResult) != 0) { //already in playlist; need to gray out the result
+		$firstLine = '<a href="#" data-role="button" data-icon="check" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">';	
+	}
+	
 	echo
-		'<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">' .
+		$firstLine . 
 			'<span class="ui-btn-inner' . $class_extras . '" aria-hidden="true">' .
 				'<span class="ui-btn-text">' . 
 					'<h3 class="ui-li-heading">' . $row['name'] . '</h3>' . 

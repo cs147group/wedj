@@ -1,3 +1,4 @@
+
 $(window).ready(function(){
 	// Voting click handlers
 	$(".like-button").live("click", function(){

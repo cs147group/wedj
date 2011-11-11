@@ -1,12 +1,12 @@
 <?php
 
+include "connect_db.php";
+
 $minLat = $_POST['lat'] - .015;
 $maxLat = $_POST['lat'] + .015;
 $minLon = $_POST['lon'] - .02;
 $maxLon = $_POST['lon'] + .02;
 
-mysql_connect("mysql.cs147.org","jpulvera","eymQqu6V") or die(mysql_error());
-mysql_select_db("jpulvera_mysql") or die(mysql_error());
 $query =
 	"SELECT * ".
 	"FROM parties ".
@@ -18,11 +18,11 @@ mysql_close();
 $noPartiesNearby = true;
 while ($row = mysql_fetch_array($result)) {
 	$noPartiesNearby = false;
-	echo '<li><a href="party.php" class="nearbyParty">'.$row['name'].'</a></li>';
+	echo '<li><a href="party.php" class="nearbyParty" partyid="'.$row['id'].'">'.$row['name'].'</a></li>';
 }
 
 if ($noPartiesNearby) {
-	echo '<p align="center">No parties were found nearby.</p>';
+	echo '<p align="center">No parties were found nearby. Join a party by entering its name below.</p>';
 }
 
 ?>

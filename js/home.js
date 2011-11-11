@@ -26,17 +26,17 @@ function browse_lookup(position) {
 }
 
 function join_manual() {
-	try_join($("#joinName").val());
+	try_join($("#joinName").val(), "NO_ID");
 }
 
 function join_nearby() {
-	try_join($(this).html());
+	try_join(null, $(this).attr('partyid'));
 }
 
-function try_join(partyName) {
+function try_join(partyName, partyID) {
 	$.ajax({
 		url: "join.php",
-		data: {name: partyName},
+		data: {name: partyName, id: partyID},
 		type: "POST",
 		success: function(data, ignored, ignored2){
 			if (data == "OK") {

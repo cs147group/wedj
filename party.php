@@ -11,6 +11,7 @@
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="js/party.js"></script>
+<?php if ($isHost) { ?>
 		<script type="text/javascript">
 $(document).ready(function(){
 	$("#jquery_jplayer_1").jPlayer({
@@ -24,6 +25,7 @@ $(document).ready(function(){
 	});
 });
 		</script>
+<?php } ?>
 	</head>
 	<body>
 		<div data-role="page" data-add-back-btn="true">

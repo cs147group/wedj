@@ -19,6 +19,10 @@
 		which will list all the parties near your current location, or you can type in the name of the party your're looking for if you know its exact
 		name.
 	</p>
+	<h2> I'm on a phone and the browse nearby parties button isn't working. </h2>
+	<p>
+		The browse feature requires you to let WeDJ see your location so that it can show you parties near you.  If you're on an iPhone, go to Settings.  Under Location Services, go down to Safari and click "On".  This lets web apps access your location.  If you still aren't getting any results, then there probably aren't any parties near you, so you should create one!
+	</p>
 	<h2> Okay, I joined a party.  Now what? </h2>
 	<p>
 		You should be able to see the list of suggested songs in the playlist along with the currently playing song. 

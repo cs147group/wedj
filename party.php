@@ -87,7 +87,6 @@ $(document).ready(function(){
 					<li>
 						<h3><?php echo $name; ?></h3>
 						<p><?php echo $artist; ?></p>
-						<span class="ui-li-count">0</span> 
 					</li>
 				</ul>
 <?php

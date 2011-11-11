@@ -27,7 +27,6 @@ $(document).ready(function(){
 	</head>
 	<body>
 		<div data-role="page" data-add-back-btn="true">
-
 <!-- Leave party dialog -->
 			<div id="confirmDiv" style="height:0px;overflow:hidden">
 				<div data-role="header">
@@ -45,7 +44,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 
-<!-- Info dialog -->
+<!-- Info dialog 
 			<div id="infoDiv" style="height:0px;overflow:hidden">
 				<div data-role="header">
 					<a data-icon="arrow-l" href="#" id="closeInfo">Back</a>
@@ -56,13 +55,15 @@ $(document).ready(function(){
 					<p>Here is a tutorial for WeDJ.</p>
 				</div>
 			</div>
-
+-->
 <!-- Playlist section -->
+
+
 			<div id="partyDiv" style="height:100%;overflow:hidden">
 				<div data-role="header">
 				<a data-icon="back" href="#" id="leaveButton">Leave Party</a>
 				<h1>WeDJ</h1>
-				<a data-icon="info" href="#" id="infoButton">Info</a>
+				<a data-icon="info" href="info.php">Info</a>
 			</div>
 			<div data-role="content">
 <?php
@@ -152,10 +153,8 @@ $(document).ready(function(){
 	$partyID = $row['party'];
 	
 	$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY rating DESC");
-   $isFirst = 1;
-while ($row = mysql_fetch_array($playlistResult)) {
-if($isFirst ==0){		
-$currSongID = $row["songID"];
+	while ($row = mysql_fetch_array($playlistResult)) {
+		$currSongID = $row["songID"];
 		$currRating = $row["rating"];
 		$songsResult =mysql_query("SELECT * FROM songs WHERE songID = $currSongID");
 		if ($row = mysql_fetch_array($songsResult)) {
@@ -173,8 +172,6 @@ $currSongID = $row["songID"];
 				</li>
 <?php
 		}
-}
-$isFirst = 0;
 	}
 ?>
 			</ul>

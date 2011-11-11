@@ -26,17 +26,17 @@
           $prevVote = $voteRow['isUpvote'];
           if($isUp == 0){
               if($prevVote == 1){ //They already upvoted once but are now changing to a downvote
-                      echo "you already upvoted, but are changing to a downvote";
+                      // echo "you already upvoted, but are changing to a downvote";
                       $result = mysql_query("UPDATE playlist SET rating = rating - 2 WHERE songID = $id");
                       $updateVoteQuery = "UPDATE votes SET isUpvote = '0' WHERE ip = '$ip' AND songID = '$id' AND isUpvote = '1' LIMIT 1";
                       mysql_query($updateVoteQuery) or die(mysql_error());
-              } else echo "you already downvoted and want to downvote again.  LAME";
+              }// else echo "you already downvoted and want to downvote again.  LAME";
           } else if ($prevVote == 0) { //They already downvoted but are changing to an upvote
-                 echo "you already downvoted, but now you're tryna upvote";
+                 // echo "you already downvoted, but now you're tryna upvote";
                  $result = mysql_query("UPDATE playlist SET rating = rating + 2 WHERE songID = $id");
                  $updateVoteQuery = "UPDATE votes SET isUpvote = '1' WHERE ip = '$ip' AND songID = '$id' AND isUpvote = '0'  LIMIT 1";
                  mysql_query($updateVoteQuery) or die(mysql_error());
-          } else echo "you already upvoted and want to upvote again NUH UH";
+          }// else echo "you already upvoted and want to upvote again NUH UH";
         }
 			}
 

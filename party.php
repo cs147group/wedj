@@ -152,7 +152,18 @@ $(document).ready(function(){
 		if($isFirst ==0){ 
 		$currSongID = $row["songID"];
 		$currRating = $row["rating"];
-		$songsResult =mysql_query("SELECT * FROM songs WHERE songID = $currSongID");
+		$alreadyVotedQuery = "SELECT * FROM votes WHERE ip = '$ip' AND songID = $currSongID";
+		$votedResult = mysql_query($alreadyVotedQuery) or die(mysql_error());
+		$disableUp = '';
+		$disableDown = '';
+		if ($row = mysql_fetch_array($votedResult)) {
+			if ($row['isUpvote']) {
+				$disableUp = ' ui-disabled';
+			} else {
+				$disableDown = ' ui-disabled';
+			}
+		}
+	$songsResult =mysql_query("SELECT * FROM songs WHERE songID = $currSongID");
 		if ($row = mysql_fetch_array($songsResult)) {
 ?>
 				<li>
@@ -161,8 +172,8 @@ $(document).ready(function(){
 					<span class="ui-li-count"><?php echo $currRating; ?></span>
 					<div data-role="controlgroup" data-type="horizontal">
 <?php 
-	echo '<a data-icon="arrow-u" data-iconpos="notext" data-role="button" href="#" class="like-button" id ="' . $currSongID . '"></a>';
-	echo '<a data-icon="arrow-d" data-iconpos="notext" data-role="button" href="#" class="dislike-button" id ="' . $currSongID . '"></a>';
+	echo '<a data-icon="arrow-u" data-iconpos="notext" data-role="button" href="#" class="like-button' . $disableUp . '" id ="' . $currSongID . '"></a>';
+	echo '<a data-icon="arrow-d" data-iconpos="notext" data-role="button" href="#" class="dislike-button' . $disableDown . '" id ="' . $currSongID . '"></a>';
 ?>
 					</div>
 				</li>

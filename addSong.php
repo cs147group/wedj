@@ -10,6 +10,11 @@ $query = "SELECT party FROM users WHERE ip='$ip';";
 $result = mysql_query($query) or die(mysql_error());
 if ($row = mysql_fetch_array($result)) {
 	$partyID = $row['party'];
+	//Tests to see if this is the only song in the party
+	$testQuery = "SELECT * FROM playlist WHERE partyID = $partyID;";
+	$testResult = mysql_query($testQuery) or die(mysql_error());
+	$isFirst = 0;
+	if(mysql_num_rows($testResult) == 0) $isFirst = 1;
 	// Now, make sure the song isn't already in the playlist for that party
 	$query = "SELECT * FROM playlist WHERE songID=$songID AND partyID=$partyID;";
 	$result = mysql_query($query) or die(mysql_error());
@@ -21,7 +26,8 @@ if ($row = mysql_fetch_array($result)) {
 		$insertVoteQuery = "INSERT INTO votes (ip, songID, isUpvote) VALUES ('$ip', '$songID', '1')";
                 mysql_query($insertVoteQuery) or die(mysql_error());
 
-		echo 'ADDED';
+		if($isFirst) echo 'ADDED1';
+		else echo 'ADDED';
 	} else {
 		echo 'ALREADY_IN_PLAYLIST';
 	}

@@ -37,6 +37,7 @@ $(document).ready(function(){
         <ul class="jp-controls">
           <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
           <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+          <li><a href="#" class="jp-next" id="next_button">next</a></li>
         </ul>
         <div class="jp-progress">
           <div class="jp-seek-bar">

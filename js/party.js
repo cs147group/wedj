@@ -58,6 +58,13 @@ $(window).ready(function(){
 					 }
 				});
 	// Add song click handler
+	//Next click handler
+	$("#next_button").click(function(){
+	$("#JPLAYA").load("updatePlayer.php", {songID: songIDNum, partyIDNum1: partyIDNum, hasEnded: 1});
+	   $("#songList").load("updatePlaylist.php", {songID: songIDNum , isUp: 1}, function(){
+			$("#songList").listview("refresh");
+		});	
+	});
 	$(".addSong").live("click", function(){
 		var button = this;
 		$.ajax({
@@ -74,11 +81,10 @@ $(window).ready(function(){
 				$(button).addClass("ui-disabled");
 				// refresh playlist if was added
 				var timesClicked = 0;
-				if (data == "ADDED") {
-					/*if(timesClicked ==0){
+				if (data == "ADDED" || data == "ADDED1") {
+					if(data == "ADDED1"){
 					$("#JPLAYA").load("updatePlayer.php", {songID: button.id, partyIDNum1: partyIDNum, hasEnded: 0});
-					timesClicked++;
-					}*/
+					}
 					$("#songList").load("updatePlaylist.php", function(){
 						$("#songList").listview("refresh");
 					});

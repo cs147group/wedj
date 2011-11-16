@@ -25,8 +25,18 @@ function browse_lookup(position) {
 		});
 }
 
-function join_manual() {
-	try_join($("#joinName").val(), "NO_ID");
+function search_parties() {
+	$("#search").html("Searching for parties...");
+	$("#search").buttonMarkup({ icon: "gear" });
+	$("#searchResults").load(
+		"search-party.php",
+		{name: $("#searchName").val()},
+		function(){
+			$("#searchResults").listview("refresh");
+			$(".partyResult").click(join_nearby);
+			$("#search").html("Search");
+			$("#search").buttonMarkup({ icon: "search" });
+		});
 }
 
 function join_nearby() {

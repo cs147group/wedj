@@ -18,7 +18,7 @@ mysql_close();
 $noPartiesNearby = true;
 while ($row = mysql_fetch_array($result)) {
 	$noPartiesNearby = false;
-	echo '<li><a href="party.php" class="nearbyParty" partyid="'.$row['id'].'">'.$row['name'].'</a></li>';
+	echo '<li><a href="#" class="nearbyParty" partyid="'.$row['id'].'">'.$row['name'].'</a></li>';
 }
 
 if ($noPartiesNearby) {

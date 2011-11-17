@@ -8,7 +8,7 @@ $(window).ready(function(){
 		});
   });
   
-  setInterval(function(){
+ setInterval(function(){
     $("#songList").load("updatePlaylist.php", function(){
 		$("#songList").listview("refresh");
 	});

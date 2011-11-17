@@ -38,19 +38,21 @@ foreach ($rows as $index => $row) {
 	$songID = $row['songID'];
 	$isInPlaylistQuery = "SELECT * FROM playlist WHERE songID = '$songID' AND partyID = '$partyID'";
 	$isInPlaylistResult = mysql_query($isInPlaylistQuery);
-	$firstLine = '<a href="#" data-role="button" data-icon="plus" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">';	
+	$disabled_class = "";
+	$icon = "plus";
 	if(mysql_num_rows($isInPlaylistResult) != 0) { //already in playlist; need to gray out the result
-		$firstLine = '<a href="#" data-role="button" data-icon="check" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c ui-disabled' . $class_extras . '" id="' . $row['songID'] . '" data-theme="c">';	
+		$disabled_class = " ui-disabled";
+		$icon = "check";
 	}
 	
 	echo
-		$firstLine . 
+		'<a href="#" data-role="button" data-icon="' . $icon . '" data-iconpos="right" class="addSong ui-btn ui-btn-icon-right ui-btn-up-c' . $class_extras . $disabled_class . '" id="' . $row['songID'] . '" data-theme="c">' .
 			'<span class="ui-btn-inner' . $class_extras . '" aria-hidden="true">' .
 				'<span class="ui-btn-text">' . 
 					'<h3 class="ui-li-heading">' . $row['name'] . '</h3>' . 
 					'<p class="ui-li-desc">' . $row['artist'] . '</p>' .
 				'</span>' .
-				'<span class="ui-icon ui-icon-plus ui-icon-shadow"></span>' .
+				'<span class="ui-icon ui-icon-' . $icon . ' ui-icon-shadow"></span>' .
 			'</span>' .
 		'</a>';
 }

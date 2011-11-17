@@ -1,11 +1,12 @@
 <?php 
 	include("connect_db.php");
 	if($_POST["hasEnded"]){
-		$dropID = $_POST["songID"];
 		$dropPartyID = $_POST["partyIDNum1"];
-		mysql_query("DELETE FROM playlist WHERE partyID = '$dropPartyID' AND songID = '$dropID'");
+		mysql_query("DELETE FROM playlist WHERE partyID = '$dropPartyID' AND isPlaying = 1");
 	}
 	include("information-gatherer.php");
+	mysql_query("UPDATE playlist SET isPlaying = 1 WHERE partyID = '$dropPartyID' AND songID = '$highestRatedSongID'");
+	include("get_is_playing.php");
 	if ($isHost) {
 ?>
 <div id="JPLAYA">
@@ -23,10 +24,7 @@ $(document).ready(function(){
 	});
 });
 <?php
- 	if ($row1 = mysql_fetch_array($playlistResult)){
- 	print "var songIDNum =" . $highestRatedSongID . ";"; 
- 	}  
- 	print "var partyIDNum = ". $partyID . ";";
+  	print "var partyIDNum = ". $partyID . ";";
 ?>
 
 		</script>

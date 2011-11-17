@@ -19,9 +19,8 @@ if ($row = mysql_fetch_array($result)) {
 	$query = "SELECT * FROM playlist WHERE songID=$songID AND partyID=$partyID;";
 	$result = mysql_query($query) or die(mysql_error());
 	if(!mysql_num_rows($result)) {
-		$query =
-			"INSERT INTO playlist (songID, partyID, rating, time)" .
-			"VALUES ('$songID', '$partyID', '1', CURRENT_TIMESTAMP);";
+		if($isFirst == 1)$query = "INSERT INTO playlist (songID, partyID, rating, time, isPlaying)" . "VALUES ('$songID', '$partyID', '1', CURRENT_TIMESTAMP, 1);";
+		if($isFirst == 0)$query = "INSERT INTO playlist (songID, partyID, rating, time, isPlaying)" . "VALUES ('$songID', '$partyID', '1', CURRENT_TIMESTAMP, 0);";
 		mysql_query($query) or die(mysql_error());
 		$insertVoteQuery = "INSERT INTO votes (ip, songID, isUpvote) VALUES ('$ip', '$songID', '1')";
                 mysql_query($insertVoteQuery) or die(mysql_error());

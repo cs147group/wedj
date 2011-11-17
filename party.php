@@ -2,6 +2,7 @@
 <?php 
 	include("connect_db.php"); 
 	include("information-gatherer.php");
+	include("get_is_playing.php");
 	//include("set-song.php");
 ?>
 <html>
@@ -66,7 +67,10 @@
 <?php
 	if (!$isHost) {
 ?>
-				<ul data-role="listview">
+<script>
+var isHost = false;
+</script>
+				<ul data-role="listview" id="nowPlaying">
 					<li>
 						<h3><?php echo $name; ?></h3>
 						<p><?php echo $artist; ?></p>
@@ -80,6 +84,9 @@
 <?php 
 	if ($isHost) {
 ?>
+<script>
+var isHost = true;
+</script>
 <div id="JPLAYA">
 <script type="text/javascript">
 $(document).ready(function(){
@@ -95,10 +102,7 @@ $(document).ready(function(){
 	});
 }); 
 <?php
- 	if ($row1 = mysql_fetch_array($playlistResult)){
- 	print "var songIDNum =" . $highestRatedSongID . ";"; 
- 	}  
- 	print "var partyIDNum = ". $partyID . ";";
+  	print "var partyIDNum = ". $partyID . ";";
 ?>
 		</script>
 	<div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -147,7 +151,7 @@ $(document).ready(function(){
 	$result = mysql_query($query) or die(mysql_error());
 	$row = mysql_fetch_array($result) or die(mysql_error());
 	$partyID = $row['party'];
-	$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY rating DESC");
+	$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY isPlaying DESC, rating DESC");
 	$isFirst = 1;
 	while ($row = mysql_fetch_array($playlistResult)) {
 		if($isFirst ==0){ 

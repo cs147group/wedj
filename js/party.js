@@ -2,11 +2,20 @@
 $(window).ready(function(){
 
 	 $("#jquery_jplayer_1").bind($.jPlayer.event.ended, function(event) {
-	  $("#JPLAYA").load("updatePlayer.php", {songID: songIDNum, partyIDNum1: partyIDNum, hasEnded: 1});
-	   $("#songList").load("updatePlaylist.php", {songID: songIDNum , isUp: 1}, function(){
+	  $("#JPLAYA").load("updatePlayer.php", {partyIDNum1: partyIDNum, hasEnded: 1});
+	   $("#songList").load("updatePlaylist.php", function(){
 			$("#songList").listview("refresh");
 		});
   });
+  
+  setInterval(function(){
+    $("#songList").load("updatePlaylist.php", function(){
+		$("#songList").listview("refresh");
+	});
+	$("#nowPlaying").load("updateNowPlaying.php", function(){
+		$("#nowPLaying").listview("refresh");
+	});
+}, 5000);
 
 	// Voting click handlers
 	$(".like-button").live("click", function(){
@@ -60,8 +69,8 @@ $(window).ready(function(){
 	// Add song click handler
 	//Next click handler
 	$("#next_button").click(function(){
-	$("#JPLAYA").load("updatePlayer.php", {songID: songIDNum, partyIDNum1: partyIDNum, hasEnded: 1});
-	   $("#songList").load("updatePlaylist.php", {songID: songIDNum , isUp: 1}, function(){
+	$("#JPLAYA").load("updatePlayer.php", {partyIDNum1: partyIDNum, hasEnded: 1});
+	   $("#songList").load("updatePlaylist.php", function(){
 			$("#songList").listview("refresh");
 		});	
 	});
@@ -83,7 +92,7 @@ $(window).ready(function(){
 				var timesClicked = 0;
 				if (data == "ADDED" || data == "ADDED1") {
 					if(data == "ADDED1"){
-					$("#JPLAYA").load("updatePlayer.php", {songID: button.id, partyIDNum1: partyIDNum, hasEnded: 0});
+					$("#JPLAYA").load("updatePlayer.php", {partyIDNum1: partyIDNum, hasEnded: 0});
 					}
 					$("#songList").load("updatePlaylist.php", function(){
 						$("#songList").listview("refresh");

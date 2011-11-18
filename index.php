@@ -18,9 +18,11 @@
 				<a href="#" data-role="button" data-icon="grid" id="browseNearby">Browse nearby parties</a>
 				<ul data-role="listview" data-inset="true" id="nearbyParties">
 				</ul>
-				<label for="joinName">Or enter a party name:</label>
-				<input type="text" id="joinName" name="joinName" />
-				<a href="#" data-role="button" data-icon="forward" id="join">Go</a>
+				<label for="searchName">Or search for a party name:</label>
+				<input type="text" id="searchName" name="searchName" />
+				<a href="#" data-role="button" data-icon="search" id="search">Search</a>
+				<ul data-role="listview" data-inset="true" id="searchResults">
+				</ul>
 				<h2>Create a new party</h2>
 				<label for="newName">Your new party name:</label>
 				<input type="text" id="newName" name="newName" />
@@ -32,10 +34,10 @@
 		$(window).ready(function(){
 		
 			$("#browseNearby").click(browse_geolocate);
-			$("#join").click(join_manual);
-		        $("#joinName").keyup(function(event){
+			$("#search").click(search_parties);
+		        $("#searchName").keyup(function(event){
 		           if(event.keyCode == 13) {
-		             join_manual();
+		             search_parties();
 		           }
 		        });
 			$("#create").click(create_geolocate);

@@ -19,7 +19,7 @@
 <!-- Leave party dialog -->
 			<div id="confirmDiv" style="height:0px;overflow:hidden">
 				<div data-role="header">
-					<a data-icon="arrow-l" href="#" class="leaveCancel">Back</a>
+					<a data-icon="arrow-l" href="#" class="leaveCancel">Back to Party</a>
 					<h1>Leave Party</h1>
 				</div>
 				<div data-role="content">
@@ -196,7 +196,7 @@ $isFirst = 0;
 <!-- Search section -->
 	<div id="searchDiv" style="height:0px;overflow:hidden">
 		<div data-role="header">
-			<a data-icon="arrow-l" href="#" id="searchBack">Back</a>
+			<a data-icon="arrow-l" href="#" id="searchBack">Done</a>
 			<h1>WeDJ</h1>
 		</div>
 		<div data-role="content">

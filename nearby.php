@@ -11,7 +11,7 @@ $query =
 	"SELECT * ".
 	"FROM parties ".
 	"WHERE lat BETWEEN ".$minLat." AND ".$maxLat.
-	" AND lon BETWEEN ".$minLon." AND ".$maxLon;
+	" AND lon BETWEEN ".$minLon." AND ".$maxLon. "ORDER BY name";
 $result = mysql_query($query) or die(mysql_error());
 mysql_close();
 

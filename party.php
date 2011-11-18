@@ -151,7 +151,7 @@ $(document).ready(function(){
 	$result = mysql_query($query) or die(mysql_error());
 	$row = mysql_fetch_array($result) or die(mysql_error());
 	$partyID = $row['party'];
-	$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY isPlaying DESC, rating DESC");
+	$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY isPlaying DESC, rating DESC, time");
 	$isFirst = 1;
 	while ($row = mysql_fetch_array($playlistResult)) {
 		if($isFirst ==0){ 

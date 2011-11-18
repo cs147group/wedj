@@ -46,7 +46,7 @@
 	$result = mysql_query($query) or die(mysql_error());
   if ($row = mysql_fetch_array($result)) {
 		$partyID = $row['party'];
-		$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY isPlaying DESC, rating DESC");
+		$playlistResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID ORDER BY isPlaying DESC, rating DESC, time");
 		// Loop through all songs in playlist
 		$isFirst = 1;
  		while ($row = mysql_fetch_array($playlistResult)) {

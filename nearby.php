@@ -6,7 +6,9 @@ $minLat = $_POST['lat'] - .015;
 $maxLat = $_POST['lat'] + .015;
 $minLon = $_POST['lon'] - .02;
 $maxLon = $_POST['lon'] + .02;
-
+$clickedTimes = $_POST['clickedTimes'];
+$clickedTimes = $clickedTimes % 2;
+if($clickedTimes){
 $query =
 	"SELECT * ".
 	"FROM parties ".
@@ -23,6 +25,7 @@ while ($row = mysql_fetch_array($result)) {
 
 if ($noPartiesNearby) {
 	echo '<p align="center">No parties were found nearby. Join a party by entering its name below.</p>';
+}
 }
 
 ?>

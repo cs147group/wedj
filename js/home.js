@@ -1,4 +1,5 @@
 function browse_geolocate() {
+	numTimesClicked++;
 	$("#browseNearby").html("Loading nearby parties...");
 	$("#browseNearby").buttonMarkup({ icon: "gear" });
 	navigator.geolocation.getCurrentPosition(browse_lookup, function(){
@@ -16,7 +17,7 @@ function create_geolocate() {
 function browse_lookup(position) {
 	$("#nearbyParties").load(
 		"nearby.php",
-		{lat: position.coords.latitude, lon: position.coords.longitude},
+		{lat: position.coords.latitude, lon: position.coords.longitude, clickedTimes: numTimesClicked},
 		function(){
 			$("#nearbyParties").listview("refresh");
 			$(".nearbyParty").click(join_nearby);

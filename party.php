@@ -19,7 +19,7 @@
 <!-- Leave party dialog -->
 			<div id="confirmDiv" style="height:0px;overflow:hidden">
 				<div data-role="header">
-					<a data-icon="arrow-l" href="#" class="leaveCancel">Back to Party</a>
+					<a data-icon="arrow-l" href="#" class="leaveConfirm">Leave</a>
 					<h1>Leave Party</h1>
 				</div>
 				<div data-role="content">
@@ -28,7 +28,7 @@
 					You will no longer be able to play music from this playlist.
 	<?php } ?>
 					</p>
-					<a href="#" data-role="button" id="leaveConfirm">Leave</a>
+					<a href="#" data-role="button" class="leaveConfirm">Leave</a>
 					<a href="#" data-role="button" class="leaveCancel">Stay</a>
 				</div>
 			</div>
@@ -45,9 +45,9 @@
 <!-- Playlist section -->
 			<div id="partyDiv" style="height:100%;overflow:hidden">
 				<div data-role="header">
-				<a data-icon="back" href="#" id="leaveButton">Leave Party</a>
+					<a data-icon="back" href="#" id="leaveButton">Leave Party</a>
 				<h1>WeDJ</h1>
-				<a data-icon="info" href="#" id="infoButton">Info</a>
+			<a data-icon="info" href="#" id="infoButton">Info</a>
 			</div>
 			<div data-role="content">
 <?php
@@ -196,7 +196,7 @@ $isFirst = 0;
 <!-- Search section -->
 	<div id="searchDiv" style="height:0px;overflow:hidden">
 		<div data-role="header">
-			<a data-icon="arrow-l" href="#" id="searchBack">Done</a>
+			<a data-icon="arrow-l" href="#" class="searchBack">Done</a>
 			<h1>WeDJ</h1>
 		</div>
 		<div data-role="content">
@@ -243,6 +243,7 @@ $isFirst = 0;
 					?>
 				</div>
 				<div id="none" style="display:none"></div>
+				<a href="#" data-role="button" class="searchBack">FINISHED ADDING!</a>
 			</div>
 		</div>
 	</div>

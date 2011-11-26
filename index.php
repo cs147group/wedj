@@ -6,12 +6,12 @@
 	<head>
 		<?php include "links.php"; ?>
 		<script type="text/javascript" src="js/home.js"></script>
-	</head>
+		</head>
 	<body>
 		<div data-role="page" data-add-back-btn="true">
 			<div data-role="header">
 				<h1>WeDJ</h1>
-				<a href="info.php" data-icon="info">Info</a>
+				<a href="info.php" data-icon="info" class="ui-btn-right">Info</a>
 			</div>
 			<div data-role="content">
 				<h2>Join a party</h2>
@@ -31,8 +31,10 @@
 		</div>
 	</body>
 	<script>
+	var numTimesClicked = 0;
+	</script>
+	<script>
 		$(window).ready(function(){
-		
 			$("#browseNearby").click(browse_geolocate);
 			$("#search").click(search_parties);
 		        $("#searchName").keyup(function(event){

@@ -33,7 +33,7 @@ $(window).ready(function(){
 		$("#partyDiv").height('0px');
 		$("#searchDiv").height('100%');
 	});
-	$("#searchBack").click( function(){
+	$(".searchBack").click( function(){
 		$("#partyDiv").height('100%');
 		$("#searchDiv").height('0px');
 	});
@@ -53,7 +53,7 @@ $(window).ready(function(){
 		$("#partyDiv").height('100%');
 		$("#infoDiv").height('0px');
 	});
-	$("#leaveConfirm").click(function(){
+	$(".leaveConfirm").click(function(){
 		window.location = "index.php";
 	});
 	// Search button click handler

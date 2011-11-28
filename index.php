@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
 	include("connect_db.php"); 
+	include("toss_parties.php");
 ?>
 <html>
 	<head>

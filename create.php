@@ -36,9 +36,9 @@ if ($row = mysql_fetch_array($result)) {
 	echo $suggestion;
 } else {
 	$query =
-		"INSERT INTO parties (name, lat, lon) " .
+		"INSERT INTO parties (name, lat, lon, time) " .
 		"VALUES ('" . mysql_real_escape_string($partyName) . "', " .
-		$lat . ", " . $lon . ")";
+		$lat . ", " . $lon . ", " . time() . ")";
 	mysql_query($query) or die(mysql_error());
 	$partyID = mysql_insert_id();
 	// Now, save this info for the user

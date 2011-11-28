@@ -187,6 +187,7 @@ $(document).ready(function(){
 	}	
 $isFirst = 0;
 	}
+	if($isFirst) echo '<p align="center">There are no songs in the playlist. You should add one!</p>';
 ?>
 			</ul>
 		</div>

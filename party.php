@@ -45,7 +45,10 @@
 <!-- Playlist section -->
 			<div id="partyDiv" style="height:100%;overflow:hidden">
 				<div data-role="header">
-					<a data-icon="back" href="#" id="leaveButton">Leave Party</a>
+					<a data-icon="back" href="#" id="leaveButton"><?php
+						if($isHost) echo "END PARTY";
+						else echo "Leave Party";
+					 ?></a>
 				<h1>WeDJ</h1>
 			<a data-icon="info" href="#" id="infoButton">Info</a>
 			</div>

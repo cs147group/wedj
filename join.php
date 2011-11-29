@@ -2,7 +2,7 @@
 
 include "connect_db.php";
 
-$partyID = mysql_real_escape_string($_POST['id']);
+$partyID = $_POST['id'];
 
 if ($partyID == "NO_ID") {
 	$partyName = $_POST['name'];
@@ -20,19 +20,17 @@ if ($partyID == "NO_ID") {
 	}
 }
 if ($partyID != "NO_ID") {
-	$ip = $_SERVER['REMOTE_ADDR'];
-	$query =
-		"SELECT * " .
-		"FROM users " .
-		"WHERE ip = '" . $ip . "'";
+	//$ip = $_SERVER['REMOTE_ADDR'];
+	$ip = "128.12.121.28";
+	$query = "SELECT * FROM users WHERE ip = '$ip'";
 	$result = mysql_query($query) or die(mysql_error());
 	if ($row = mysql_fetch_array($result)) {
-		// User already in our table
-		$query =
-			"UPDATE users " .
-			"SET isAdmin = 0, party = " . $partyID . " " .
-			"WHERE ip = '" . $ip . "'";
-	} else {
+			// User already in our table
+		if($row['party'] != $partyID){
+			$query = "UPDATE users SET isAdmin = 0, party = '$partyID' WHERE ip = '$ip'";
+		}
+	} 
+	else {
 		// New user, add to table
 		$query =
 			"INSERT INTO users " .

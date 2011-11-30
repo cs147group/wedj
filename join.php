@@ -20,8 +20,7 @@ if ($partyID == "NO_ID") {
 	}
 }
 if ($partyID != "NO_ID") {
-	//$ip = $_SERVER['REMOTE_ADDR'];
-	$ip = "128.12.121.28";
+	$ip = $_SERVER['REMOTE_ADDR'];
 	$query = "SELECT * FROM users WHERE ip = '$ip'";
 	$result = mysql_query($query) or die(mysql_error());
 	if ($row = mysql_fetch_array($result)) {

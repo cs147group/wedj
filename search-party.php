@@ -10,11 +10,13 @@
 	mysql_close();
 	$noResults = true;
 	$count = 0;
-	while($row = mysql_fetch_array($result)){
-		$sqlParty = stripSpecial($row['name']); //Is name correct?
-		if(strstr($sqlParty, $searchName) !== false){
-			$count++;
-			echo '<li><a href="#" class="partyResult" partyid="'.$row['id'].'">'.$row['name'].'</a></li>';
+	if (strlen($searchName)) {
+		while($row = mysql_fetch_array($result)){
+			$sqlParty = stripSpecial($row['name']); //Is name correct?
+			if(stripos($sqlParty, $searchName) !== false){
+				$count++;
+				echo '<li><a href="#" class="partyResult" partyid="'.$row['id'].'">'.$row['name'].'</a></li>';
+			}
 		}
 	}
 	if($count == 0) echo '<p align="center">No parties were found.</p>';

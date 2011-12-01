@@ -12,6 +12,29 @@
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="js/party.js"></script>
+		<script type="text/javascript">
+			$(window).ready(function(){
+				isPaused = false;
+<?php if ($isSongPlaying) { ?>
+				waitingForTrack = false;
+<?php } else { ?>
+				waitingForTrack = true;
+<?php } ?>
+				// Reload current track
+				setInterval(function(){
+<?php if ($isHost) { ?>
+					if (waitingForTrack && !isPaused) {
+						playNextSong();
+					}
+				}, 1000);
+<?php } else { ?>
+					$("#nowPlaying").load("updateNowPlaying.php", function(){
+						$("#nowPLaying").listview("refresh");
+					});
+				}, 5000);
+<?php } ?>
+			});
+		</script>
 	</head>
 	<body>
 		<div data-role="page" data-add-back-btn="true">
@@ -131,7 +154,7 @@ $(document).ready(function(){
       </div>
       <div class="jp-title">
         <ul>
-          <li><?php echo $name . " - " . $artist; ?></li>
+          <li id="jplayer_title"><?php echo $name . " - " . $artist; ?></li>
         </ul>
       </div>
       <div class="jp-no-solution">

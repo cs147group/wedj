@@ -1,21 +1,51 @@
-
-$(window).ready(function(){
-
-	 $("#jquery_jplayer_1").bind($.jPlayer.event.ended, function(event) {
-	  $("#JPLAYA").load("updatePlayer.php", {partyIDNum1: partyIDNum, hasEnded: 1});
-	   $("#songList").load("updatePlaylist.php", function(){
-			$("#songList").listview("refresh");
-		});
-  });
-  
- setInterval(function(){
-    $("#songList").load("updatePlaylist.php", function(){
+function updatePlaylist() {
+	$("#songList").load("updatePlaylist.php", function(){
 		$("#songList").listview("refresh");
 	});
-	$("#nowPlaying").load("updateNowPlaying.php", function(){
-		$("#nowPLaying").listview("refresh");
+}
+
+function playNextSong() {
+	$.ajax({
+		url: "next-song.php",
+		success: function(data, ignored, ignored2){
+			var songInfo = data.split('\n');
+			if (songInfo[0] == "NOT_HOST") {
+				// do nothing
+			}
+			if (songInfo[0] == "NO_MORE_SONGS") {
+				waitingForTrack = true;
+			} else {
+				waitingForTrack = false;
+				$("#jplayer_title").html(songInfo[0]);
+				$("#jquery_jplayer_1").jPlayer("setMedia", {mp3: songInfo[1]});
+			}
+			$("#jquery_jplayer_1").jPlayer("play");
+		}
 	});
-}, 5000);
+	updatePlaylist();
+}
+
+$(window).ready(function(){
+	// When songs end, automatically advance track
+	$("#jquery_jplayer_1").bind($.jPlayer.event.ended, playNextSong);
+  
+	// Next button click handler
+	$("#next_button").click(playNextSong);
+
+	// Play button click handler
+	$("#jquery_jplayer_1").bind($.jPlayer.event.play, function(e){
+		isPaused = false;
+	});
+
+	// Pause button click handler
+	$("#jquery_jplayer_1").bind($.jPlayer.event.pause, function(e){
+		isPaused = true;
+	});
+
+	// Automatically refresh playlist
+	setInterval(function(){
+		updatePlaylist();
+	}, 5000);
 
 	// Voting click handlers
 	$(".like-button").live("click", function(){
@@ -28,6 +58,7 @@ $(window).ready(function(){
 			$("#songList").listview("refresh");
 		});
 	});
+
 	// Navigation button handlers
 	$("#addButton").click( function(){
 		$("#partyDiv").height('0px');
@@ -56,24 +87,20 @@ $(window).ready(function(){
 	$(".leaveConfirm").click(function(){
 		window.location = "index.php";
 	});
+
 	// Search button click handler
 	$("#searchButton").click(function(){
 		$("#searchResults").load("searchsong.php", {searchText: $("#search").val()});
 	});
+
 	// Search box "enter" key handler
 				$("#search").keyup(function(event){           
 					 if(event.keyCode == 13) {
 							 $("#searchResults").load("searchsong.php", {searchText: $("#search").val()});
 					 }
 				});
+
 	// Add song click handler
-	//Next click handler
-	$("#next_button").click(function(){
-	$("#JPLAYA").load("updatePlayer.php", {partyIDNum1: partyIDNum, hasEnded: 1});
-	   $("#songList").load("updatePlaylist.php", function(){
-			$("#songList").listview("refresh");
-		});	
-	});
 	$(".addSong").live("click", function(){
 		var button = this;
 		$.ajax({
@@ -90,13 +117,8 @@ $(window).ready(function(){
 				$(button).addClass("ui-disabled");
 				// refresh playlist if was added
 				var timesClicked = 0;
-				if (data == "ADDED" || data == "ADDED1") {
-					if(data == "ADDED1"){
-					$("#JPLAYA").load("updatePlayer.php", {partyIDNum1: partyIDNum, hasEnded: 0});
-					}
-					$("#songList").load("updatePlaylist.php", function(){
-						$("#songList").listview("refresh");
-					});
+				if (data == "ADDED") {
+					updatePlaylist();
 				}
 			}
 		});

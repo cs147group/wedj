@@ -53,7 +53,6 @@
 <!-- Leave party dialog -->
 			<div id="confirmDiv" style="height:0px;overflow:hidden">
 				<div data-role="header" data-position="fixed" data-theme="c">
-					<a data-icon="arrow-l" href="#" class="leaveConfirm">Leave</a>
 					<h1>Leave Party</h1>
 				</div>
 				<div data-role="content">
@@ -79,7 +78,7 @@
 <!-- Playlist section -->
 			<div id="partyDiv" style="height:100%;overflow:hidden">
 				<div data-role="header" data-position="fixed" data-theme="c">
-					<a data-icon="back" href="#" id="leaveButton"><?php
+					<a data-icon="back" href="#" id="leaveButton" data-theme="d"><?php
 						if($isHost) echo "END PARTY";
 						else echo "Leave Party";
 					 ?></a>

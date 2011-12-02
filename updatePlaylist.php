@@ -1,5 +1,6 @@
 <?php
 	include("connect_db.php");
+	include("information-gatherer.php");
 	$id = $_POST["songID"];
 	$isUp = $_POST["isUp"];
 	$ip = $_SERVER['REMOTE_ADDR'];
@@ -92,5 +93,8 @@
 $isFirst = 0;
 	}
 	}
-	if($isFirst) echo '<p align="center">There are no songs in the playlist. You should add one!</p>'
+	$newResult = mysql_query("SELECT * FROM playlist WHERE partyID = $partyID");
+	$numRows = mysql_num_rows($newResult);
+	if($numRows ==1) echo '<p align="center">The songs in this playlist will run out soon. You should add one!</p>';
+	if($isFirst) echo '<p align="center">There are no songs in the playlist. You should add one!</p>';
 ?>

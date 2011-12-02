@@ -79,6 +79,9 @@ $(window).ready(function(){
 		});
 	});
 
+	updateState("confirm", "party");
+	clickedLeaveButton = false;
+
 	// Navigation button handlers
 	$("#addButton").click( function(){
 		changeScreen("party", "search");
@@ -90,9 +93,16 @@ $(window).ready(function(){
 	$("#leaveButton").click( function(){
 		changeScreen("party", "confirm");
 		updateState("party", "confirm");
+		clickedLeaveButton = true;
 	});
 	$(".leaveCancel").click( function(){
-		history.back();
+		if (clickedLeaveButton) {
+			history.back();
+			clickedLeaveButton = false;
+		} else {
+			changeScreen("confirm", "party");
+			updateState("confirm", "party");
+		}
 	});
 	$("#infoButton").click( function(){
 		changeScreen("party", "info");

@@ -9,6 +9,9 @@
 	<head>
 		<?php include "links.php"; ?>
 		<link type="text/css" href="skin/jplayer.blue.monday.css" rel="stylesheet" />
+		<!--
+		<link type="text/css" href="skin/tealplayer.css" rel="stylesheet" />
+		-->
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="js/party.js"></script>
@@ -38,10 +41,18 @@
 	</head>
 	<body>
 		<div data-role="page" data-add-back-btn="true">
+			<!--
+			in order to have a stationary header on this party.php page, you have to put the header here after the data-role='page' and not in individual divs
+			-->
+			<!--
+			<div data-role="header" data-position="fixed" data-theme="c">
+				<h1>Hey</h1>
+			</div>
+			-->
 
 <!-- Leave party dialog -->
 			<div id="confirmDiv" style="height:0px;overflow:hidden">
-				<div data-role="header">
+				<div data-role="header" data-position="fixed" data-theme="c">
 					<a data-icon="arrow-l" href="#" class="leaveConfirm">Leave</a>
 					<h1>Leave Party</h1>
 				</div>
@@ -51,14 +62,14 @@
 					You will no longer be able to play music from this playlist.
 	<?php } ?>
 					</p>
-					<a href="#" data-role="button" class="leaveConfirm">Leave</a>
+					<a href="#" data-role="button" class="leaveConfirm" data-theme="d">Leave</a>
 					<a href="#" data-role="button" class="leaveCancel">Stay</a>
 				</div>
 			</div>
 
 <!-- Info dialog -->
 			<div id="infoDiv" style="height:0px;overflow:hidden">
-				<div data-role="header">
+				<div data-role="header" data-position="fixed" data-theme="c">
 					<a data-icon="arrow-l" href="#" id="closeInfo">Back</a>
 					<h1>Information</h1>
 				</div>
@@ -67,13 +78,13 @@
 
 <!-- Playlist section -->
 			<div id="partyDiv" style="height:100%;overflow:hidden">
-				<div data-role="header">
+				<div data-role="header" data-position="fixed" data-theme="c">
 					<a data-icon="back" href="#" id="leaveButton"><?php
 						if($isHost) echo "END PARTY";
 						else echo "Leave Party";
 					 ?></a>
 				<h1>WeDJ</h1>
-			<a data-icon="info" href="#" id="infoButton">Info</a>
+			<a data-icon="info" href="#" id="infoButton" data-theme="a">Info</a>
 			</div>
 			<div data-role="content">
 <?php
@@ -222,7 +233,7 @@ $isFirst = 0;
 
 <!-- Search section -->
 	<div id="searchDiv" style="height:0px;overflow:hidden">
-		<div data-role="header">
+		<div data-role="header" data-position="fixed" data-theme="c">
 			<a data-icon="arrow-l" href="#" class="searchBack">Done</a>
 			<h1>WeDJ</h1>
 		</div>

@@ -44,15 +44,15 @@ if ($mobile_browser > 0) {
 		<?php include "links.php"; ?>
 		<script type="text/javascript" src="js/home.js"></script>
 		</head>
-	<body>
+	<body>	
 		<div data-role="page" data-add-back-btn="true">
-			<div data-role="header">
+			<div data-role="header" data-position="fixed" data-theme="c">
 				<h1>WeDJ</h1>
-				<a href="info.php" data-icon="info" class="ui-btn-right">Info</a>
+				<a href="info.php" data-icon="info" class="ui-btn-right" data-theme="a">Info</a>
 			</div>
 			<div data-role="content">
 				<h2>Join a party</h2>
-				<a href="#" data-role="button" data-icon="grid" id="browseNearby">Browse nearby parties</a>
+				<a href="#" data-role="button" data-icon="geolocate" id="browseNearby" data-theme="c">Browse nearby parties</a>
 				<ul data-role="listview" data-inset="true" id="nearbyParties">
 				</ul>
 				<label for="searchName">Or search for a party name:</label>

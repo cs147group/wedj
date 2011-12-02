@@ -81,7 +81,7 @@
   	<a data-icon="arrow-d" data-iconpos="notext" data-role="button" href="#" class="dislike-button ui-btn ui-btn-icon-notext ui-corner-right ui-controlgroup-last ui-btn-up-c<?php echo $disableDown; ?>" id="<?php echo $currSongID; ?>" title="" data-theme="c">
     	<span class="ui-btn-inner ui-corner-right ui-controlgroup-last" aria-hidden="true">
       	<span class="ui-btn-text"></span>
-      	<span class="ui-icon ui-icon-arrow-d ui-icon-shadow"></span>
+      	<span class="ui-icon ui-icon-arrow-d ui-icon-shadow" ></span>
     	</span>
   	</a>
 	</div>

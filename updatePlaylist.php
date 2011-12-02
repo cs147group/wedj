@@ -31,11 +31,21 @@
                       $result = mysql_query("UPDATE playlist SET rating = rating - 2 WHERE songID = $id");
                       $updateVoteQuery = "UPDATE votes SET isUpvote = '0' WHERE ip = '$ip' AND songID = '$id' AND isUpvote = '1' LIMIT 1";
                       mysql_query($updateVoteQuery) or die(mysql_error());
-              } 
-          } else if ($prevVote == 0) { //They already downvoted but are changing to an upvote
-                 $result = mysql_query("UPDATE playlist SET rating = rating + 2 WHERE songID = $id");
-                 $updateVoteQuery = "UPDATE votes SET isUpvote = '1' WHERE ip = '$ip' AND songID = '$id' AND isUpvote = '0'  LIMIT 1";
-                 mysql_query($updateVoteQuery) or die(mysql_error());
+              } else { //they already downvoted and are changing back to neutral
+              	      $result = mysql_query("UPDATE playlist SET rating = rating + 1 WHERE songID = $id");
+                      $updateVoteQuery = "DELETE FROM votes WHERE ip = '$ip' AND songID = '$id' LIMIT 1";
+                      mysql_query($updateVoteQuery) or die(mysql_error());
+              }
+          } else {
+          		if ($prevVote == 0) { //They already upvoted but are changing to an upvote
+                 	$result = mysql_query("UPDATE playlist SET rating = rating + 2 WHERE songID = $id");
+                 	$updateVoteQuery = "UPDATE votes SET isUpvote = '1' WHERE ip = '$ip' AND songID = '$id' AND isUpvote = '0'  LIMIT 1";
+                 	mysql_query($updateVoteQuery) or die(mysql_error());
+                } else { //they already downvoted and are changing back to neutral
+              	      $result = mysql_query("UPDATE playlist SET rating = rating - 1 WHERE songID = $id");
+                      $updateVoteQuery = "DELETE FROM votes WHERE ip = '$ip' AND songID = '$id' LIMIT 1";
+                      mysql_query($updateVoteQuery) or die(mysql_error());                	
+                }   
           } 
 
         }
@@ -56,13 +66,13 @@
       $currRating = $row["rating"];
 			$alreadyVotedQuery = "SELECT * FROM votes WHERE ip = '$ip' AND songID = $currSongID";
 			$votedResult = mysql_query($alreadyVotedQuery) or die(mysql_error());
-			$disableUp = '';
-			$disableDown = '';
+			$disableUp = 'ui-btn-up-c';
+			$disableDown = 'ui-btn-up-c';
 			if ($row = mysql_fetch_array($votedResult)) {
 				if ($row['isUpvote']) {
-					$disableUp = ' ui-disabled';
+					$disableUp = 'ui-btn-down-c';
 				} else {
-					$disableDown = ' ui-disabled';
+					$disableDown = 'ui-btn-down-c';
 				}
 			}
 			$songResult =mysql_query("SELECT * FROM songs WHERE songID = $currSongID");
@@ -73,13 +83,13 @@
 	<p><?php echo $row["artist"]; ?></p>
 	<span class="ui-li-count"><?php echo $currRating; ?></span>
 	<div data-role="controlgroup" data-type="horizontal" class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal">
-  	<a data-icon="arrow-u" data-iconpos="notext" data-role="button" href="#" class="like-button ui-btn ui-btn-icon-notext ui-corner-left ui-btn-up-c<?php echo $disableUp; ?>" id="<?php echo $currSongID; ?>" title="" data-theme="c">
+  	<a data-icon="arrow-u" data-iconpos="notext" data-role="button" href="#" class="like-button ui-btn ui-btn-icon-notext ui-corner-left <?php echo $disableUp; ?>" id="<?php echo $currSongID; ?>" title="" data-theme="c">
     	<span class="ui-btn-inner ui-corner-left" aria-hidden="true">
       	<span class="ui-btn-text"></span>
       	<span class="ui-icon ui-icon-arrow-u ui-icon-shadow"></span>
     	</span>
   	</a>
-  	<a data-icon="arrow-d" data-iconpos="notext" data-role="button" href="#" class="dislike-button ui-btn ui-btn-icon-notext ui-corner-right ui-controlgroup-last ui-btn-up-c<?php echo $disableDown; ?>" id="<?php echo $currSongID; ?>" title="" data-theme="c">
+  	<a data-icon="arrow-d" data-iconpos="notext" data-role="button" href="#" class="dislike-button ui-btn ui-btn-icon-notext ui-corner-right ui-controlgroup-last <?php echo $disableDown; ?>" id="<?php echo $currSongID; ?>" title="" data-theme="c">
     	<span class="ui-btn-inner ui-corner-right ui-controlgroup-last" aria-hidden="true">
       	<span class="ui-btn-text"></span>
       	<span class="ui-icon ui-icon-arrow-d ui-icon-shadow" ></span>

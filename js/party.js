@@ -25,6 +25,26 @@ function playNextSong() {
 	updatePlaylist();
 }
 
+// Switch screens (playlist, search, info, exit)
+function changeScreen(fromDiv, toDiv) {
+	$("#" + fromDiv + "Div").height('0px');
+	$("#" + toDiv + "Div").height('100%');
+}
+
+// Track state history of screens
+function updateState(fromDiv, toDiv) {
+	history.replaceState({fromPage: fromDiv, toPage: toDiv}, fromDiv + " to " + toDiv);
+	history.pushState({placeholder: true}, "placeholder");
+}
+
+// Handle back buttons
+window.onpopstate = function(event) {
+	if (!event.state) return;
+	if (!event.state.placeholder) {
+		changeScreen(event.state.toPage, event.state.fromPage);
+	}
+};
+
 $(window).ready(function(){
 	// When songs end, automatically advance track
 	$("#jquery_jplayer_1").bind($.jPlayer.event.ended, playNextSong);
@@ -61,28 +81,25 @@ $(window).ready(function(){
 
 	// Navigation button handlers
 	$("#addButton").click( function(){
-		$("#partyDiv").height('0px');
-		$("#searchDiv").height('100%');
+		changeScreen("party", "search");
+		updateState("party", "search");
 	});
 	$(".searchBack").click( function(){
-		$("#partyDiv").height('100%');
-		$("#searchDiv").height('0px');
+		history.back();
 	});
 	$("#leaveButton").click( function(){
-		$("#partyDiv").height('0px');
-		$("#confirmDiv").height('100%');
+		changeScreen("party", "confirm");
+		updateState("party", "confirm");
 	});
 	$(".leaveCancel").click( function(){
-		$("#partyDiv").height('100%');
-		$("#confirmDiv").height('0px');
+		history.back();
 	});
 	$("#infoButton").click( function(){
-		$("#partyDiv").height('0px');
-		$("#infoDiv").height('100%');
+		changeScreen("party", "info");
+		updateState("party", "info");
 	});
 	$("#closeInfo").click( function(){
-		$("#partyDiv").height('100%');
-		$("#infoDiv").height('0px');
+		history.back();
 	});
 	$(".leaveConfirm").click(function(){
 		window.location = "index.php";

@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div data-role="page" data-add-back-btn="true">
-			<div data-role="header" data-position="fixed" data-theme="c">
+			<div data-role="header" data-theme="c">
 				<h1>Whoops!</h1>
 			</div>
 			<div data-role="content">

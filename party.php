@@ -52,7 +52,7 @@
 
 <!-- Leave party dialog -->
 			<div id="confirmDiv" style="height:0px;overflow:hidden">
-				<div data-role="header" data-position="fixed" data-theme="c">
+				<div data-role="header" data-theme="c">
 					<h1>Leave Party</h1>
 				</div>
 				<div data-role="content">
@@ -68,7 +68,7 @@
 
 <!-- Info dialog -->
 			<div id="infoDiv" style="height:0px;overflow:hidden">
-				<div data-role="header" data-position="fixed" data-theme="c">
+				<div data-role="header" data-theme="c">
 					<a data-icon="arrow-l" href="#" id="closeInfo">Back</a>
 					<h1>Information</h1>
 				</div>
@@ -77,7 +77,7 @@
 
 <!-- Playlist section -->
 			<div id="partyDiv" style="height:100%;overflow:hidden">
-				<div data-role="header" data-position="fixed" data-theme="c">
+				<div data-role="header" data-theme="c">
 					<a data-icon="back" href="#" id="leaveButton" data-theme="d"><?php
 						if($isHost) echo "END PARTY";
 						else echo "Leave Party";
@@ -232,7 +232,7 @@ $isFirst = 0;
 
 <!-- Search section -->
 	<div id="searchDiv" style="height:0px;overflow:hidden">
-		<div data-role="header" data-position="fixed" data-theme="c">
+		<div data-role="header" data-theme="c">
 			<a data-icon="arrow-l" href="#" class="searchBack">Done</a>
 			<h1>WeDJ</h1>
 		</div>

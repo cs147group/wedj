@@ -48,6 +48,7 @@ if ($mobile_browser > 0) {
 		<div data-role="page" data-add-back-btn="true">
 			<div data-role="header" data-position="fixed" data-theme="c">
 				<h1>WeDJ</h1>
+				<img id="logo" src="images/57.png"></img>
 				<a href="info.php" data-icon="info" class="ui-btn-right" data-theme="a">Info</a>
 			</div>
 			<div data-role="content">

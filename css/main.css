@@ -8,6 +8,13 @@
 #nearbyParties {
 	margin: 10px 0 10px 8px;
 }
+#logo {
+	width:40px;
+	height:40px;
+	float:left;
+	margin:-42px 0px 0px 10px;
+}
+
 /*
 .ui-icon-geolocate {
 	background-image: url(themes/images/geolocate2.png);

@@ -8,17 +8,25 @@ $rows = array();
 $songIDs = array();
 $query = "SELECT * FROM songs WHERE name LIKE '%" . $searchText . "%';";
 $result = mysql_query($query) or die(mysql_error());
+$isSearchSuccessful = false;
 while ($row = mysql_fetch_array($result)) {
+	$isSearchSuccessful = true;
 	$songIDs[] = $row["songID"];
 	$rows[] = $row;
 }
 $query = "SELECT * FROM songs WHERE artist LIKE '%" . $searchText . "%';";
 $result = mysql_query($query) or die(mysql_error());
 while ($row = mysql_fetch_array($result)) {
+	$isSearchSuccessful = true;
 	if (!in_array($row["songID"], $songIDs)) {
 		$rows[] = $row;
 	}
 }
+
+	if (!$isSearchSuccessful) {
+		echo "<label>Sorry, there are no songs that match \"".$searchText."\" in the database</label>";
+	}
+
 $lastIndex = count($rows) - 1;
 foreach ($rows as $index => $row) {
 	$class_extras = "";

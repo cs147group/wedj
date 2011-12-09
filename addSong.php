@@ -16,7 +16,7 @@ if ($row = mysql_fetch_array($result)) {
 	if(!mysql_num_rows($result)) {
 		$enqueueQuery = "INSERT INTO playlist (songID, partyID, rating, time, isPlaying)" . "VALUES ('$songID', '$partyID', '1', CURRENT_TIMESTAMP, 0);";
 		mysql_query($enqueueQuery) or die(mysql_error());
-		$insertVoteQuery = "INSERT INTO votes (ip, songID, isUpvote) VALUES ('$ip', '$songID', '1')";
+		$insertVoteQuery = "INSERT INTO votes (ip, songID, isUpvote, party) VALUES ('$ip', '$songID', '1', '$partyID')";
     mysql_query($insertVoteQuery) or die(mysql_error());
 		echo 'ADDED';
 	} else {

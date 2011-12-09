@@ -193,7 +193,7 @@ $(document).ready(function(){
 		if($isFirst ==0){ 
 		$currSongID = $row["songID"];
 		$currRating = $row["rating"];
-		$alreadyVotedQuery = "SELECT * FROM votes WHERE ip = '$ip' AND songID = $currSongID";
+		$alreadyVotedQuery = "SELECT * FROM votes WHERE ip = '$ip' AND songID = $currSongID AND party = $partyID";
 		$votedResult = mysql_query($alreadyVotedQuery) or die(mysql_error());
 		$disableUp = 'ui-btn-up-c';
 		$disableDown = 'ui-btn-up-c';

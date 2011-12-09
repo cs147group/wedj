@@ -4,7 +4,7 @@ function browse_geolocate() {
 	$("#browseNearby").buttonMarkup({ icon: "gear" });
 	navigator.geolocation.getCurrentPosition(browse_lookup, function(){
 		$("#browseNearby").html("Browse nearby parties");
-		$("#browseNearby").buttonMarkup({ icon: "grid" });
+		$("#browseNearby").buttonMarkup({ icon: "plus" });
 	});
 }
 
@@ -22,7 +22,7 @@ function browse_lookup(position) {
 			$("#nearbyParties").listview("refresh");
 			$(".nearbyParty").click(join_nearby);
 			$("#browseNearby").html("Browse nearby parties");
-			$("#browseNearby").buttonMarkup({ icon: "grid" });
+			$("#browseNearby").buttonMarkup({ icon: "plus" });
 		});
 }
 

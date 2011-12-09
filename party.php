@@ -83,7 +83,7 @@
 						else echo "Leave Party";
 					 ?></a>
 				<h1>WeDJ</h1>
-			<a data-icon="info" href="#" id="infoButton" data-theme="a">Info</a>
+			<a data-icon="info" href="#" id="infoButton" data-theme="a">Help</a>
 			</div>
 			<div data-role="content">
 <?php
@@ -253,7 +253,7 @@ $isFirst = 0;
 						<h3><?php echo $genreName; ?></h3>
 						<div data-role="controlgroup">
 							<?php
-							   $genreResult = mysql_query("SELECT * FROM songs WHERE genre = '$genreIndex'");
+							   $genreResult = mysql_query("SELECT * FROM songs WHERE genre = '$genreIndex' ORDER BY name");
 							   while ($row = mysql_fetch_array($genreResult)) {
 									$songTitle = $row["name"];
 							  	$artist = $row["artist"];
@@ -280,7 +280,7 @@ $isFirst = 0;
 					?>
 				</div>
 				<div id="none" style="display:none"></div>
-				<a href="#" data-role="button" class="searchBack">FINISHED ADDING!</a>
+				<a href="#" data-role="button" class="searchBack">Finished Adding</a>
 			</div>
 		</div>
 	</div>

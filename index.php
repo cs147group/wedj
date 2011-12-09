@@ -33,8 +33,8 @@ if (strpos(strtolower($_SERVER['ALL_HTTP']),'OperaMini') > 0) {
 if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),'windows') > 0) {
 	$mobile_browser = 0;
 }
-
-if ($mobile_browser > 0) {
+if (true) {
+//if ($mobile_browser > 0) {
 	// Using a mobile browser
 	include("connect_db.php"); 
 	include("toss_parties.php");
@@ -49,7 +49,7 @@ if ($mobile_browser > 0) {
 			<div data-role="header" data-theme="c">
 				<h1>WeDJ</h1>
 				<img id="logo" src="images/57.png"></img>
-				<a href="info.php" data-icon="info" class="ui-btn-right" data-theme="a">Info</a>
+				<a href="info.php" data-icon="info" class="ui-btn-right" data-theme="a">Help</a>
 			</div>
 			<div data-role="content">
 				<h2>Join a party</h2>

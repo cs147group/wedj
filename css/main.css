@@ -15,6 +15,27 @@
 	margin:-42px 0px 0px 10px;
 }
 
+
+.ui-page{
+	background: transparent url(../teal2.gif) !important;
+	background-size: 100%;
+	color: #ddd !important;
+	text-shadow: none !important;
+}
+
+.ui-body-c{
+	background: #555;
+	border: 1px 0px 1px 0px;
+	color: #ddd;
+	text-shadow: none;
+}
+
+h2 {
+margin:0px;
+text-align:center;
+}
+
+
 /*
 .ui-icon-geolocate {
 	background-image: url(themes/images/geolocate2.png);
